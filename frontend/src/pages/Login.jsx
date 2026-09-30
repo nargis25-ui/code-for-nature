@@ -5,20 +5,14 @@ import "./Login.css";
 import {
   FaEnvelope,
   FaLock,
-  FaGoogle,
   FaEye,
   FaEyeSlash,
 } from "react-icons/fa";
-
-import { signInWithPopup } from "firebase/auth";
-import { auth, googleProvider } from "../firebase";
 
 function Login() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [showPassword, setShowPassword] = useState(false);
-  const [loading, setLoading] = useState(false);
-
   const navigate = useNavigate();
 
   // Email + Password Login
@@ -36,25 +30,6 @@ function Login() {
 
     // Go to Dashboard
     navigate("/dashboard", { replace: true });
-  };
-
-  // Google Login
-  const handleGoogleLogin = async () => {
-    try {
-      setLoading(true);
-
-      const result = await signInWithPopup(auth, googleProvider);
-
-      sessionStorage.setItem("isLoggedIn", "true");
-      sessionStorage.setItem("userEmail", result.user.email);
-
-      navigate("/dashboard", { replace: true });
-    } catch (error) {
-      console.error("Google Login Error:", error);
-      alert("Google login failed. Please try again.");
-    } finally {
-      setLoading(false);
-    }
   };
 
   return (
@@ -133,20 +108,6 @@ function Login() {
         <div className="divider">
           <span>OR</span>
         </div>
-
-        {/* Google Login */}
-        <button
-          type="button"
-          className="google-btn"
-          onClick={handleGoogleLogin}
-          disabled={loading}
-        >
-          <FaGoogle />
-
-          {loading
-            ? "Signing in..."
-            : "Continue with Google"}
-        </button>
 
         {/* Signup */}
         <p className="signup-text">
