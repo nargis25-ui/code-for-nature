@@ -20,4 +20,14 @@
   "devDependencies": {
     "nodemon": "^3.1.14"
   }
+
+  {
+  "electricity": 120,
+  "water": 500,
+  "ewaste": 2,
+  "aiUsage": 15
+ 
 }
+
+}
+
