@@ -8,6 +8,13 @@
   padding: 0;
 }
 
+html,
+body,
+#root {
+  width: 100%;
+  min-height: 100%;
+}
+
 body {
   font-family: Arial, Helvetica, sans-serif;
   background: #f4faf5;
@@ -19,6 +26,7 @@ body {
 ========================= */
 
 .login-page {
+  width: 100%;
   min-height: 100vh;
 
   background:
@@ -38,181 +46,10 @@ body {
 
   position: relative;
   overflow: hidden;
-}
-
-
-/* =========================
-   NAVBAR
-========================= */
-
-.top-navbar {
-  height: 64px;
-
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-
-  padding: 0 32px;
-
-  background: rgba(255, 255, 255, 0.9);
-
-  border-bottom: 1px solid #e1eee4;
-
-  position: relative;
-  z-index: 10;
-}
-
-
-/* Logo */
-
-.navbar-logo {
-  display: flex;
-  align-items: center;
-  gap: 9px;
-
-  font-size: 17px;
-  font-weight: 700;
-
-  color: #176b3a;
-}
-
-.logo-symbol {
-  width: 34px;
-  height: 34px;
 
   display: flex;
   align-items: center;
   justify-content: center;
-
-  background: #e6f6e9;
-
-  border-radius: 10px;
-
-  color: #2e8b57;
-
-  font-size: 18px;
-}
-
-
-/* Center title */
-
-.navbar-title {
-  position: absolute;
-
-  left: 50%;
-  transform: translateX(-50%);
-
-  font-size: 15px;
-  font-weight: 600;
-
-  color: #183024;
-}
-
-.navbar-title span {
-  margin-left: 5px;
-
-  color: #6b8071;
-}
-
-
-/* Navbar buttons */
-
-.navbar-actions {
-  display: flex;
-  align-items: center;
-
-  gap: 10px;
-}
-
-
-/* Help */
-
-.help-button {
-  width: 32px;
-  height: 32px;
-
-  border-radius: 50%;
-
-  border: 1px solid #d7e7da;
-
-  background: white;
-
-  color: #527060;
-
-  cursor: pointer;
-
-  transition: 0.2s;
-}
-
-.help-button:hover {
-  background: #eaf7ed;
-
-  color: #176b3a;
-}
-
-
-/* Signup */
-
-.signup-button {
-  padding: 9px 17px;
-
-  border: none;
-
-  border-radius: 8px;
-
-  background: #176b3a;
-
-  color: white;
-
-  font-size: 12px;
-
-  font-weight: 600;
-
-  cursor: pointer;
-
-  transition: 0.2s;
-}
-
-.signup-button:hover {
-  background: #12582f;
-
-  transform: translateY(-1px);
-}
-
-
-/* Google */
-
-.google-button {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-
-  gap: 8px;
-
-  padding: 9px 15px;
-
-  border: 1px solid #d9e6dc;
-
-  border-radius: 8px;
-
-  background: white;
-
-  color: #26352b;
-
-  font-size: 12px;
-
-  font-weight: 600;
-
-  cursor: pointer;
-
-  transition: 0.2s;
-}
-
-.google-button:hover {
-  background: #f7fbf8;
-
-  box-shadow:
-    0 5px 15px rgba(23, 107, 58, 0.1);
 }
 
 
@@ -221,18 +58,16 @@ body {
 ========================= */
 
 .login-container {
-  min-height: calc(100vh - 64px);
+  width: 100%;
+  min-height: 100vh;
 
   display: flex;
-
   align-items: center;
-
   justify-content: center;
 
   padding: 40px 20px;
 
   position: relative;
-
   z-index: 2;
 }
 
@@ -243,6 +78,7 @@ body {
 
 .login-card {
   width: 410px;
+  max-width: 100%;
 
   padding: 38px;
 
@@ -546,11 +382,100 @@ body {
 
 
 /* =========================
+   SIGNUP + GOOGLE
+========================= */
+
+.social-login {
+  width: 100%;
+
+  display: flex;
+  flex-direction: column;
+
+  gap: 10px;
+
+  margin-top: 18px;
+}
+
+
+/* Signup */
+
+.social-login .signup-button {
+  width: 100%;
+  height: 44px;
+
+  padding: 9px 17px;
+
+  border: none;
+
+  border-radius: 8px;
+
+  background: #176b3a;
+
+  color: white;
+
+  font-size: 12px;
+
+  font-weight: 600;
+
+  cursor: pointer;
+
+  transition: 0.2s;
+}
+
+.social-login .signup-button:hover {
+  background: #12582f;
+
+  transform: translateY(-1px);
+}
+
+
+/* Google */
+
+.social-login .google-button {
+  width: 100%;
+  height: 44px;
+
+  display: flex;
+
+  align-items: center;
+
+  justify-content: center;
+
+  gap: 8px;
+
+  padding: 9px 15px;
+
+  border: 1px solid #d9e6dc;
+
+  border-radius: 8px;
+
+  background: white;
+
+  color: #26352b;
+
+  font-size: 12px;
+
+  font-weight: 600;
+
+  cursor: pointer;
+
+  transition: 0.2s;
+}
+
+.social-login .google-button:hover {
+  background: #f7fbf8;
+
+  box-shadow:
+    0 5px 15px rgba(23, 107, 58, 0.1);
+}
+
+
+/* =========================
    REQUEST ACCESS
 ========================= */
 
 .request-access {
-  margin-top: 23px;
+  margin-top: 20px;
 
   text-align: center;
 
@@ -588,6 +513,8 @@ body {
   border-radius: 50%;
 
   pointer-events: none;
+
+  z-index: 1;
 }
 
 
@@ -679,29 +606,12 @@ body {
 
 @media (max-width: 700px) {
 
-  .top-navbar {
-    padding: 0 15px;
-  }
-
-  .navbar-title {
-    display: none;
-  }
-
-  .help-button {
-    display: none;
-  }
-
-  .signup-button {
-    display: none;
-  }
-
   .login-container {
     padding: 30px 15px;
   }
 
   .login-card {
     width: 100%;
-
     max-width: 410px;
 
     padding: 32px 24px;
@@ -715,10 +625,8 @@ body {
 
 @media (max-width: 450px) {
 
-  .google-button {
-    padding: 8px 10px;
-
-    font-size: 11px;
+  .login-container {
+    padding: 20px 12px;
   }
 
   .login-card {
@@ -733,5 +641,10 @@ body {
 
   .welcome-section h1 {
     font-size: 23px;
+  }
+
+  .social-login .signup-button,
+  .social-login .google-button {
+    height: 42px;
   }
 }
