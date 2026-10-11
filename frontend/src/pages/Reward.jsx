@@ -19,16 +19,8 @@ import "./Dashboard/Dashboard.css";
 import "./Reward.css";
 
 const navigation = [
-  {
-    label: "My tracker",
-    icon: "◉",
-    path: "/dashboard",
-  },
-  {
-    label: "Eco tips",
-    icon: "♧",
-    path: "/eco-tips",
-  },
+  { label: "My tracker", icon: "◉", path: "/dashboard" },
+  { label: "Eco tips", icon: "♧", path: "/eco-tips" },
   {
     label: "Green Optimizer",
     icon: "✿",
@@ -40,26 +32,10 @@ const navigation = [
     path: "/prompt-studio",
     badge: "NEW",
   },
-  {
-    label: "Reports",
-    icon: "▥",
-    path: "/reports",
-  },
-  {
-    label: "Rewards",
-    icon: "★",
-    path: "/rewards",
-  },
-  {
-    label: "Profile",
-    icon: "♙",
-    path: "/profile",
-  },
-  {
-    label: "Settings",
-    icon: "⚙",
-    path: "/settings",
-  },
+  { label: "Reports", icon: "▥", path: "/reports" },
+  { label: "Rewards", icon: "★", path: "/rewards" },
+  { label: "Profile", icon: "♙", path: "/profile" },
+  { label: "Settings", icon: "⚙", path: "/settings" },
 ];
 
 const badges = [
@@ -176,11 +152,9 @@ function Reward() {
 
   return (
     <div className="eco-dashboard reward-dashboard">
-      {/* Sidebar */}
       <aside className="eco-sidebar">
         <Link to="/dashboard" className="eco-brand">
           <span className="eco-brand-icon">🌿</span>
-
           <span>
             <strong>verdant.ai</strong>
             <small>Sustainability Workspace</small>
@@ -198,35 +172,27 @@ function Reward() {
           >
             Personal
           </button>
-
-          <button
-            type="button"
-            className="workspace-btn"
-          >
+          <button type="button" className="workspace-btn">
             Organization
           </button>
         </div>
 
         <nav className="eco-nav" aria-label="Main navigation">
           {navigation.map((item) => {
-            const isActive =
-              location.pathname === item.path ||
-              (item.path === "/dashboard" &&
-                location.pathname === "/dashboard");
+            const isActive = location.pathname === item.path;
 
             return (
               <Link
                 key={item.path}
                 to={item.path}
-                className={`eco-nav-link ${
-                  isActive ? "active" : ""
-                }`}
+                className={
+                  isActive
+                    ? "eco-nav-link active"
+                    : "eco-nav-link"
+                }
                 aria-current={isActive ? "page" : undefined}
               >
-                <span className="eco-nav-icon">
-                  {item.icon}
-                </span>
-
+                <span className="eco-nav-icon">{item.icon}</span>
                 <span>{item.label}</span>
 
                 {item.badge && (
@@ -244,7 +210,6 @@ function Reward() {
             <div className="eco-avatar">
               {userEmail.charAt(0).toUpperCase()}
             </div>
-
             <div className="eco-user-info">
               <strong>{userEmail}</strong>
               <small>EcoAI user</small>
@@ -261,10 +226,8 @@ function Reward() {
         </div>
       </aside>
 
-      {/* Main Content */}
       <main className="eco-main reward-main-content">
         <div className="reward-container">
-          {/* Header */}
           <header className="reward-header">
             <div>
               <h2>Rewards</h2>
@@ -287,7 +250,6 @@ function Reward() {
               <div className="profile-avatar">
                 {userEmail.charAt(0).toUpperCase()}
               </div>
-
               <div className="profile-details">
                 <strong>{userEmail}</strong>
                 <span>Eco Member</span>
@@ -295,7 +257,6 @@ function Reward() {
             </div>
           </header>
 
-          {/* Introduction */}
           <section className="reward-intro">
             <div>
               <h1>Rewards &amp; Achievements</h1>
@@ -310,7 +271,6 @@ function Reward() {
                 size={27}
                 fill="currentColor"
               />
-
               <div>
                 <strong>1,200</strong>
                 <span>Eco Points</span>
@@ -318,10 +278,8 @@ function Reward() {
             </div>
           </section>
 
-          {/* Rewards Grid */}
           <div className="reward-layout">
             <div className="reward-main">
-              {/* Achievement Badges */}
               <section className="reward-card">
                 <h3>Achievement Badges</h3>
 
@@ -331,9 +289,11 @@ function Reward() {
 
                     return (
                       <article
-                        className={`achievement-badge ${
-                          badge.completed ? "" : "locked-badge"
-                        }`}
+                        className={
+                          badge.completed
+                            ? "achievement-badge"
+                            : "achievement-badge locked-badge"
+                        }
                         key={badge.title}
                       >
                         <Icon
@@ -341,7 +301,6 @@ function Reward() {
                           size={35}
                           strokeWidth={1.8}
                         />
-
                         <h4>{badge.title}</h4>
                         <p>{badge.description}</p>
 
@@ -362,7 +321,6 @@ function Reward() {
                 </div>
               </section>
 
-              {/* Weekly Challenges */}
               <section className="reward-card challenge-card">
                 <h3>Weekly Challenges</h3>
 
@@ -374,9 +332,7 @@ function Reward() {
                     >
                       <div className="challenge-heading">
                         <span>{challenge.title}</span>
-                        <strong>
-                          +{challenge.reward} pts
-                        </strong>
+                        <strong>+{challenge.reward} pts</strong>
                       </div>
 
                       <div
@@ -404,24 +360,21 @@ function Reward() {
               </section>
             </div>
 
-            {/* Right Sidebar */}
             <aside className="reward-sidebar">
-              {/* Leaderboard */}
               <section className="reward-card leaderboard-card">
                 <h3>
-                  <Medal
-                    size={19}
-                    className="section-icon"
-                  />
+                  <Medal size={19} className="section-icon" />
                   Leaderboard
                 </h3>
 
                 <div className="leaderboard-list">
                   {leaderboard.map((person) => (
                     <div
-                      className={`leaderboard-row ${
-                        person.isUser ? "current-user" : ""
-                      }`}
+                      className={
+                        person.isUser
+                          ? "leaderboard-row current-user"
+                          : "leaderboard-row"
+                      }
                       key={person.name}
                     >
                       <div className="rank-number">
@@ -431,10 +384,7 @@ function Reward() {
                           person.rank === 3 ? (
                           <Medal size={18} />
                         ) : person.isUser ? (
-                          <Star
-                            size={19}
-                            fill="currentColor"
-                          />
+                          <Star size={19} fill="currentColor" />
                         ) : (
                           person.rank
                         )}
@@ -443,7 +393,6 @@ function Reward() {
                       <div className="leader-avatar">
                         {person.initial}
                       </div>
-
                       <div className="leader-info">
                         <strong>{person.name}</strong>
                         <span>{person.points} pts</span>
@@ -453,7 +402,6 @@ function Reward() {
                 </div>
               </section>
 
-              {/* Recent Rewards */}
               <section className="reward-card recent-card">
                 <h3>Recent Rewards</h3>
 
@@ -470,12 +418,10 @@ function Reward() {
                           size={23}
                           className="recent-icon"
                         />
-
                         <div className="recent-info">
                           <strong>{reward.title}</strong>
                           <span>{reward.date}</span>
                         </div>
-
                         <span className="reward-points">
                           +{reward.points}
                         </span>
@@ -488,7 +434,6 @@ function Reward() {
           </div>
         </div>
 
-        {/* AI Assistant */}
         <button
           className="assistant-button"
           type="button"
