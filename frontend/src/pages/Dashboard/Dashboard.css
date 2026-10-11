@@ -1,24 +1,9 @@
-/* =========================================
-   VERDANT.AI — DASHBOARD STYLES
-   Dark green sidebar + light content area
-========================================= */
 
-:root {
-  --eco-dark: #06271e;
-  --eco-sidebar: #092e23;
-  --eco-sidebar-active: #205542;
-  --eco-green: #208956;
-  --eco-bright: #39d99b;
-  --eco-text: #153c30;
-  --eco-muted: #779087;
-  --eco-border: #dce9df;
-  --eco-page: #f4f8f4;
-  --eco-white: #ffffff;
-  --eco-danger: #b42318;
-  --eco-success: #187447;
-}
+/* ========================================
+   VERDANT.AI - DASHBOARD STYLES
+======================================== */
 
-/* Reset */
+/* ---------- GLOBAL STYLES ---------- */
 
 * {
   box-sizing: border-box;
@@ -31,9 +16,9 @@ html {
 
 body {
   margin: 0;
-  font-family: Arial, Helvetica, sans-serif;
-  color: var(--eco-text);
-  background: var(--eco-page);
+  font-family: Inter, "Segoe UI", Arial, sans-serif;
+  background: #f4f8f5;
+  color: #14382d;
 }
 
 button,
@@ -42,381 +27,401 @@ input {
 }
 
 button {
-  cursor: pointer;
+  -webkit-tap-highlight-color: transparent;
 }
-
-button:disabled {
-  cursor: not-allowed;
-  opacity: 0.65;
-}
-
-a {
-  color: inherit;
-}
-
-/* =========================================
-   MAIN LAYOUT
-========================================= */
 
 .eco-dashboard {
-  min-height: 100vh;
   display: flex;
-  align-items: stretch;
-  background: var(--eco-page);
+  min-height: 100vh;
+  background: #f4f8f5;
 }
 
-/* =========================================
-   LEFT SIDEBAR
-========================================= */
+/* ---------- SIDEBAR ---------- */
 
 .eco-sidebar {
   width: 250px;
   min-width: 250px;
   min-height: 100vh;
-  padding: 26px 18px 20px;
+  height: 100vh;
+  position: sticky;
+  top: 0;
   display: flex;
   flex-direction: column;
-  background: var(--eco-sidebar);
-  color: #f0fff7;
-  border-right: 1px solid #164534;
+  padding: 30px 16px 20px;
+  background: #082d23;
+  color: #ffffff;
+  overflow-y: auto;
+  scrollbar-width: thin;
+  scrollbar-color: #205744 #082d23;
 }
 
-/* Brand */
+/* ---------- BRAND / LOGO ---------- */
 
 .eco-brand {
   display: flex;
   align-items: center;
   gap: 12px;
-  padding: 7px 8px 24px;
+  padding: 6px 8px;
+  margin-bottom: 20px;
+  color: #ffffff;
   text-decoration: none;
-  color: #f0fff7;
+  border-radius: 10px;
 }
 
 .eco-brand-icon {
-  width: 42px;
-  height: 42px;
-  flex-shrink: 0;
+  width: 44px;
+  height: 44px;
+  min-width: 44px;
   display: flex;
   align-items: center;
   justify-content: center;
+  background: #d9f4c7;
   border-radius: 12px;
-  background: #d9f5bd;
   font-size: 25px;
 }
 
+.eco-brand > span:last-child {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  min-width: 0;
+}
+
 .eco-brand strong {
-  display: block;
-  margin-bottom: 5px;
-  font-size: 19px;
+  font-size: 17px;
   font-weight: 700;
   letter-spacing: -0.4px;
 }
 
 .eco-brand small {
-  display: block;
-  color: #9fbeaf;
+  color: #9fc9b8;
   font-size: 11px;
-  line-height: 1.5;
+  white-space: nowrap;
 }
 
-/* Navigation list */
+/* ---------- PERSONAL / ORGANIZATION TOGGLE ---------- */
+
+.workspace-toggle {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  width: 100%;
+  margin: 16px 0 20px;
+  padding: 6px;
+  background: #06271f;
+  border: 1px solid #164b3b;
+  border-radius: 12px;
+}
+
+.workspace-btn {
+  flex: 1;
+  min-width: 0;
+  padding: 13px 4px;
+  border: none;
+  border-radius: 8px;
+  background: transparent;
+  color: #8db6a8;
+  font-family: inherit;
+  font-size: 13px;
+  font-weight: 500;
+  white-space: nowrap;
+  cursor: pointer;
+  transition:
+    background-color 0.2s ease,
+    color 0.2s ease,
+    box-shadow 0.2s ease;
+}
+
+.workspace-btn.active {
+  background: #205744;
+  color: #ffffff;
+  box-shadow: 0 1px 3px rgb(0 0 0 / 12%);
+}
+
+.workspace-btn:hover:not(.active) {
+  background: #103d30;
+  color: #d5eee4;
+}
+
+.workspace-btn:focus-visible {
+  outline: 2px solid #45d6a1;
+  outline-offset: 2px;
+}
+
+/* ---------- SIDEBAR NAVIGATION ---------- */
 
 .eco-nav {
   display: flex;
   flex-direction: column;
-  gap: 7px;
-  margin-top: 15px;
+  gap: 8px;
+  width: 100%;
 }
-
-/* Navigation buttons */
 
 .eco-nav-link {
-  width: 100%;
-  min-height: 46px;
+  position: relative;
   display: flex;
   align-items: center;
-  gap: 12px;
-  padding: 12px 13px;
-  border: 1px solid transparent;
-  border-radius: 9px;
-  background: transparent;
-  color: #b3cbbf;
+  gap: 13px;
+  width: 100%;
+  min-height: 48px;
+  padding: 12px 14px;
+  border-radius: 10px;
+  color: #b3d0c5;
   text-decoration: none;
   font-size: 13px;
-  font-weight: 500;
+  font-weight: 400;
   transition:
-    background 0.2s ease,
-    color 0.2s ease,
-    border-color 0.2s ease;
-}
-
-.eco-nav-icon {
-  width: 20px;
-  min-width: 20px;
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  color: #8db9a3;
-  font-size: 18px;
-  line-height: 1;
+    background-color 0.2s ease,
+    color 0.2s ease;
 }
 
 .eco-nav-link:hover {
-  background: #123e2e;
+  background: #103d30;
   color: #ffffff;
-}
-
-.eco-nav-link:hover .eco-nav-icon {
-  color: var(--eco-bright);
 }
 
 .eco-nav-link.active {
-  background: var(--eco-sidebar-active);
+  background: #205744;
   color: #ffffff;
 }
 
+.eco-nav-icon {
+  width: 18px;
+  min-width: 18px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  color: #80bda7;
+  font-size: 17px;
+}
+
 .eco-nav-link.active .eco-nav-icon {
-  color: var(--eco-bright);
+  color: #48e1ad;
 }
-
-.eco-nav-link:focus-visible,
-.eco-logout:focus-visible {
-  outline: 2px solid var(--eco-bright);
-  outline-offset: 3px;
-}
-
-/* NEW badge */
 
 .eco-nav-badge {
   margin-left: auto;
-  padding: 4px 6px;
+  padding: 5px 7px;
+  background: #12664c;
+  color: #75f0c0;
   border-radius: 4px;
-  background: #116344;
-  color: #8af0c2;
   font-size: 9px;
   font-weight: 700;
-  letter-spacing: 0.4px;
+  letter-spacing: 0.3px;
 }
 
-/* =========================================
-   SIDEBAR USER AND LOGOUT
-========================================= */
+/* ---------- SIDEBAR BOTTOM ---------- */
 
 .eco-sidebar-bottom {
   margin-top: auto;
-  padding-top: 20px;
-  border-top: 1px solid #204738;
+  padding-top: 24px;
 }
 
 .eco-user {
   display: flex;
   align-items: center;
   gap: 10px;
-  padding: 8px 4px 15px;
+  min-width: 0;
+  padding: 12px 4px;
+  border-top: 1px solid #1a4638;
 }
 
 .eco-avatar {
-  width: 35px;
-  height: 35px;
-  min-width: 35px;
+  width: 36px;
+  height: 36px;
+  min-width: 36px;
   display: flex;
   align-items: center;
   justify-content: center;
   border-radius: 50%;
-  background: #d6f0b9;
-  color: #174b34;
+  background: #d9f4c7;
+  color: #0b4635;
   font-size: 15px;
   font-weight: 700;
 }
 
 .eco-user-info {
-  min-width: 0;
   display: flex;
   flex-direction: column;
-  gap: 5px;
+  gap: 4px;
+  min-width: 0;
 }
 
 .eco-user-info strong {
-  overflow-wrap: anywhere;
-  color: #f0fff7;
+  overflow: hidden;
+  color: #ffffff;
   font-size: 11px;
   font-weight: 600;
+  text-overflow: ellipsis;
+  white-space: nowrap;
 }
 
 .eco-user-info small {
-  color: #9fbeaf;
+  color: #8db6a8;
   font-size: 10px;
 }
 
 .eco-logout {
   width: 100%;
-  min-height: 40px;
-  padding: 10px 12px;
-  border: 1px solid transparent;
+  padding: 11px;
+  border: 1px solid #285344;
   border-radius: 8px;
   background: transparent;
-  color: #afc8ba;
+  color: #c3ddd1;
   text-align: left;
   font-size: 12px;
-  transition: background 0.2s ease;
+  cursor: pointer;
+  transition:
+    background-color 0.2s ease,
+    color 0.2s ease;
 }
 
 .eco-logout:hover {
-  background: #123e2e;
+  background: #183f32;
   color: #ffffff;
 }
 
-/* =========================================
-   MAIN CONTENT
-========================================= */
+/* ---------- MAIN CONTENT ---------- */
 
 .eco-main {
   flex: 1;
   min-width: 0;
-  max-width: 1500px;
-  margin: 0 auto;
-  padding: 38px 42px 30px;
-  background: var(--eco-page);
+  padding: 36px;
+  overflow-x: hidden;
 }
 
-/* Header */
+.eco-main > * {
+  max-width: 1200px;
+  margin-right: auto;
+  margin-left: auto;
+}
+
+.eco-main > .eco-header {
+  margin-top: 0;
+}
+
+/* ---------- DASHBOARD HEADER ---------- */
 
 .eco-header {
   display: flex;
-  align-items: center;
+  align-items: flex-start;
   justify-content: space-between;
-  gap: 22px;
+  gap: 24px;
   margin-bottom: 36px;
 }
 
 .eco-eyebrow {
-  margin: 0 0 12px;
-  color: #68887a;
+  margin: 0 0 10px;
+  color: #548472;
   font-size: 10px;
   font-weight: 700;
-  letter-spacing: 1.6px;
-  line-height: 1.5;
+  letter-spacing: 1.4px;
+  line-height: 1.6;
 }
 
 .eco-header h1 {
-  margin: 0 0 8px;
-  color: #123c2e;
-  font-size: clamp(25px, 3vw, 35px);
-  font-weight: 600;
+  margin: 0;
+  color: #123a2c;
+  font-size: clamp(24px, 2.5vw, 34px);
+  font-weight: 700;
   letter-spacing: -1px;
-  line-height: 1.2;
+  line-height: 1.3;
 }
 
 .eco-subtitle {
-  margin: 0;
-  color: var(--eco-muted);
+  margin: 12px 0 0;
+  color: #71867b;
   font-size: 14px;
   line-height: 1.7;
 }
 
-/* Status badge */
-
 .eco-status {
-  flex-shrink: 0;
   display: inline-flex;
   align-items: center;
-  gap: 9px;
-  padding: 13px 16px;
-  border: 1px solid var(--eco-border);
-  border-radius: 30px;
-  background: var(--eco-white);
-  color: #56766a;
+  gap: 8px;
+  flex-shrink: 0;
+  padding: 10px 14px;
+  border: 1px solid #d9e9df;
+  border-radius: 24px;
+  background: #ffffff;
+  color: #456f5c;
   font-size: 11px;
+  white-space: nowrap;
 }
 
 .eco-status-dot {
   width: 8px;
   height: 8px;
   border-radius: 50%;
-  background: #36ad70;
+  background: #37bd83;
 }
 
-/* =========================================
-   ALERT MESSAGES
-========================================= */
+/* ---------- ALERT MESSAGES ---------- */
 
 .eco-alert {
-  margin: 0 0 22px;
-  padding: 14px 17px;
-  border: 1px solid;
+  margin-bottom: 20px;
+  padding: 14px 16px;
   border-radius: 10px;
   font-size: 13px;
   line-height: 1.6;
 }
 
 .eco-alert-error {
-  border-color: #ffc9c3;
-  background: #fff4f2;
-  color: var(--eco-danger);
+  border: 1px solid #f2c5c5;
+  background: #fff1f1;
+  color: #a42c2c;
 }
 
 .eco-alert-success {
-  border-color: #b8e5ca;
-  background: #effaf3;
-  color: var(--eco-success);
+  border: 1px solid #c4e8d0;
+  background: #edfff3;
+  color: #226f45;
 }
 
-/* =========================================
-   SECTION HEADINGS
-========================================= */
+/* ---------- USAGE OVERVIEW ---------- */
 
 .eco-section {
-  margin-bottom: 40px;
+  margin-bottom: 32px;
 }
 
 .eco-section-heading {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  gap: 15px;
-  margin-bottom: 21px;
-}
-
-.eco-section-heading .eco-eyebrow {
-  margin-bottom: 9px;
+  gap: 16px;
+  margin-bottom: 20px;
 }
 
 .eco-section-heading h2,
 .eco-panel h2 {
   margin: 0;
-  color: #153d30;
-  font-size: 20px;
-  font-weight: 600;
-  line-height: 1.4;
+  color: #173c2f;
+  font-size: 21px;
+  font-weight: 700;
+  letter-spacing: -0.4px;
 }
 
-/* Refresh button */
-
 .eco-refresh {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  gap: 7px;
-  min-height: 40px;
-  padding: 10px 15px;
-  border: 1px solid #d5e5d8;
+  padding: 10px 14px;
+  border: 1px solid #d8e8dd;
   border-radius: 9px;
   background: #ffffff;
-  color: #315f49;
+  color: #356a52;
   font-size: 12px;
-  transition:
-    background 0.2s ease,
-    border-color 0.2s ease;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
 }
 
 .eco-refresh:hover:not(:disabled) {
-  border-color: #9bceb0;
-  background: #edf8ef;
+  background: #eaf6ed;
 }
 
-/* =========================================
-   USAGE METRIC CARDS
-========================================= */
+.eco-refresh:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+/* ---------- METRIC CARDS ---------- */
 
 .eco-metrics {
   display: grid;
@@ -426,12 +431,11 @@ a {
 
 .eco-metric-card {
   min-width: 0;
-  min-height: 190px;
-  padding: 20px 17px;
-  border: 1px solid #dfebe1;
-  border-radius: 18px;
+  padding: 20px;
+  border: 1px solid #e0ebe2;
+  border-radius: 15px;
   background: #ffffff;
-  box-shadow: 0 7px 22px rgba(24, 73, 47, 0.025);
+  box-shadow: 0 4px 18px rgb(22 64 43 / 3%);
   transition:
     transform 0.2s ease,
     box-shadow 0.2s ease;
@@ -439,124 +443,121 @@ a {
 
 .eco-metric-card:hover {
   transform: translateY(-2px);
-  box-shadow: 0 10px 25px rgba(24, 73, 47, 0.07);
+  box-shadow: 0 8px 24px rgb(22 64 43 / 7%);
 }
 
 .eco-metric-top {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  gap: 10px;
-  margin-bottom: 24px;
+  gap: 8px;
+  margin-bottom: 20px;
 }
 
 .eco-metric-icon {
-  width: 43px;
-  height: 43px;
-  flex-shrink: 0;
-  display: inline-flex;
+  width: 42px;
+  height: 42px;
+  display: flex;
   align-items: center;
   justify-content: center;
-  border-radius: 13px;
-  background: #edf6e8;
-  font-size: 22px;
+  border-radius: 12px;
+  background: #eff8e9;
+  font-size: 21px;
 }
 
 .eco-metric-unit {
-  color: #82988d;
+  color: #7a9486;
   font-size: 10px;
 }
 
 .eco-metric-label {
-  margin: 0 0 9px;
-  color: #6e8a7e;
+  margin: 0 0 10px;
+  color: #668073;
   font-size: 12px;
   line-height: 1.5;
 }
 
 .eco-metric-value {
-  color: #123d2e;
-  font-size: 29px;
+  overflow-wrap: anywhere;
+  color: #143b2c;
+  font-size: clamp(22px, 2.2vw, 30px);
   font-weight: 700;
-  line-height: 1.3;
+  letter-spacing: -0.8px;
 }
 
 .eco-metric-description {
-  margin: 5px 0 0;
-  color: #8aa095;
+  margin: 9px 0 0;
+  color: #91a399;
   font-size: 10px;
   line-height: 1.5;
 }
 
 .eco-record-count {
-  margin: 18px 0 0;
-  color: #82988d;
-  text-align: center;
+  margin: 14px 0 0;
+  color: #7c9285;
   font-size: 11px;
 }
 
-/* =========================================
-   MAIN CONTENT GRID
-========================================= */
+/* ---------- CONTENT GRID ---------- */
 
 .eco-content-grid {
   display: grid;
-  grid-template-columns: minmax(0, 1.15fr) minmax(0, 0.95fr);
+  grid-template-columns: minmax(0, 1.15fr) minmax(0, 0.85fr);
   align-items: start;
-  gap: 20px;
+  gap: 22px;
+  margin-bottom: 28px;
 }
-
-/* Shared panels */
 
 .eco-panel {
   min-width: 0;
-  padding: 27px 25px;
-  border: 1px solid #dfeae0;
-  border-radius: 18px;
+  padding: 25px;
+  border: 1px solid #e0ebe2;
+  border-radius: 16px;
   background: #ffffff;
-  box-shadow: 0 8px 25px rgba(28, 72, 47, 0.025);
+  box-shadow: 0 4px 18px rgb(22 64 43 / 3%);
   scroll-margin-top: 24px;
 }
 
 .eco-panel-heading {
   display: flex;
-  align-items: flex-start;
+  align-items: center;
   justify-content: space-between;
-  gap: 15px;
-}
-
-.eco-panel-heading .eco-eyebrow {
-  margin-bottom: 10px;
+  gap: 16px;
 }
 
 .eco-panel-emoji {
-  font-size: 25px;
+  width: 44px;
+  height: 44px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  border-radius: 12px;
+  background: #eff8e9;
+  font-size: 22px;
 }
 
 .eco-panel-description {
-  margin: 10px 0 24px;
-  color: #7a9387;
-  text-align: center;
+  margin: 14px 0 22px;
+  color: #758b7e;
   font-size: 12px;
   line-height: 1.8;
 }
 
-/* =========================================
-   USAGE FORM
-========================================= */
+/* ---------- USAGE FORM ---------- */
 
 .eco-usage-form {
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: 21px 14px;
+  gap: 18px 14px;
 }
 
 .eco-usage-form label {
   display: flex;
   flex-direction: column;
-  gap: 11px;
-  color: #315d48;
-  text-align: center;
+  gap: 9px;
+  min-width: 0;
+  color: #365b49;
   font-size: 12px;
   font-weight: 600;
 }
@@ -564,167 +565,147 @@ a {
 .eco-usage-form input {
   width: 100%;
   min-width: 0;
-  height: 53px;
-  padding: 0 13px;
-  border: 1px solid #d6e5d8;
-  border-radius: 10px;
+  height: 44px;
+  padding: 0 12px;
+  border: 1px solid #dce8df;
+  border-radius: 9px;
   outline: none;
   background: #fbfdfb;
-  color: #234a37;
+  color: #193d2f;
   font-size: 13px;
-  font-weight: 400;
   transition:
     border-color 0.2s ease,
     box-shadow 0.2s ease;
 }
 
 .eco-usage-form input::placeholder {
-  color: #8c9d92;
+  color: #a0b1a6;
 }
 
 .eco-usage-form input:focus {
-  border-color: #38ad73;
-  box-shadow: 0 0 0 3px rgba(57, 217, 155, 0.12);
+  border-color: #48bd8a;
+  box-shadow: 0 0 0 3px rgb(72 189 138 / 12%);
 }
 
 .eco-submit {
   grid-column: 1 / -1;
   width: 100%;
-  min-height: 48px;
-  margin-top: 1px;
-  padding: 12px 17px;
+  min-height: 46px;
+  margin-top: 4px;
+  padding: 12px 18px;
   border: none;
-  border-radius: 10px;
-  background: #205c42;
+  border-radius: 9px;
+  background: #176448;
   color: #ffffff;
   font-size: 13px;
   font-weight: 600;
+  cursor: pointer;
   transition:
-    background 0.2s ease,
+    background-color 0.2s ease,
     transform 0.2s ease;
 }
 
 .eco-submit:hover:not(:disabled) {
   transform: translateY(-1px);
-  background: #28784f;
+  background: #10543b;
 }
 
-/* =========================================
-   GREEN TIPS
-========================================= */
-
-.eco-tips-panel {
-  background: #fcfefb;
+.eco-submit:disabled {
+  opacity: 0.65;
+  cursor: not-allowed;
 }
 
-.eco-tips-panel > .eco-eyebrow,
-.eco-tips-panel > h2,
-.eco-tips-panel > .eco-panel-description {
-  text-align: center;
-}
+/* ---------- GREEN TIPS ---------- */
 
 .eco-tips-panel > .eco-eyebrow {
-  margin-bottom: 11px;
-}
-
-.eco-tips-panel > .eco-panel-description {
-  margin-bottom: 23px;
+  margin-bottom: 10px;
 }
 
 .eco-tip {
   display: flex;
   align-items: flex-start;
-  gap: 15px;
+  gap: 13px;
   padding: 16px 0;
-  border-bottom: 1px solid #e5eee4;
-}
-
-.eco-tip:last-of-type {
-  border-bottom: none;
+  border-bottom: 1px solid #edf2ed;
 }
 
 .eco-tip > span {
-  width: 40px;
-  height: 40px;
-  min-width: 40px;
+  width: 38px;
+  height: 38px;
+  min-width: 38px;
   display: flex;
   align-items: center;
   justify-content: center;
-  border-radius: 12px;
-  background: #edf6e8;
-  font-size: 20px;
+  border-radius: 11px;
+  background: #eff8e9;
+  font-size: 19px;
 }
 
 .eco-tip > div {
-  flex: 1;
   min-width: 0;
-  text-align: center;
 }
 
 .eco-tip strong {
   display: block;
-  margin: 4px 0 7px;
-  color: #28543d;
+  margin-bottom: 6px;
+  color: #244d39;
   font-size: 12px;
+  font-weight: 650;
 }
 
 .eco-tip p {
   margin: 0;
-  color: #82968a;
+  color: #7a9083;
   font-size: 11px;
-  line-height: 1.8;
-}
-
-.eco-disclaimer {
-  margin: 16px 0 0;
-  color: #82968a;
-  font-size: 10px;
   line-height: 1.7;
 }
 
-/* =========================================
-   FUTURE FEATURE SECTIONS
-========================================= */
+.eco-disclaimer {
+  margin: 18px 0 0;
+  color: #819487;
+  font-size: 10px;
+  line-height: 1.8;
+}
+
+/* ---------- FUTURE FEATURE SECTIONS ---------- */
 
 .eco-future-section {
-  margin-top: 24px;
-  scroll-margin-top: 24px;
+  margin-bottom: 22px;
 }
 
 .eco-future-section h2 {
-  margin-bottom: 10px;
+  margin-bottom: 12px;
 }
 
 .eco-future-section > p:last-child {
   margin-bottom: 0;
-  color: #779087;
+  color: #748a7d;
   font-size: 13px;
   line-height: 1.8;
 }
 
-/* Footer */
+/* ---------- FOOTER ---------- */
 
 .eco-footer {
-  padding: 30px 0 5px;
-  color: #8a9d91;
-  text-align: center;
+  padding: 24px 0 8px;
+  color: #83978a;
   font-size: 11px;
+  line-height: 1.8;
+  text-align: center;
 }
 
-/* =========================================
-   TABLET RESPONSIVE
-========================================= */
+/* ---------- TABLET ---------- */
 
 @media (max-width: 1100px) {
   .eco-sidebar {
-    width: 225px;
-    min-width: 225px;
+    width: 230px;
+    min-width: 230px;
     padding-right: 14px;
     padding-left: 14px;
   }
 
   .eco-main {
-    padding: 30px 24px;
+    padding: 28px 22px;
   }
 
   .eco-metrics {
@@ -732,147 +713,174 @@ a {
   }
 
   .eco-content-grid {
-    grid-template-columns: 1fr;
+    grid-template-columns: minmax(0, 1fr);
   }
 }
 
-/* =========================================
-   MOBILE RESPONSIVE
-========================================= */
+/* ---------- MOBILE ---------- */
 
-@media (max-width: 700px) {
+@media (max-width: 650px) {
   .eco-dashboard {
     flex-direction: column;
   }
 
   .eco-sidebar {
+    position: relative;
+    top: auto;
     width: 100%;
     min-width: 0;
-    min-height: auto;
+    height: auto;
+    min-height: 0;
     padding: 16px;
-    border-right: none;
-    border-bottom: 1px solid #164534;
+    overflow: visible;
   }
 
   .eco-brand {
-    padding: 4px 5px 15px;
+    margin-bottom: 12px;
+  }
+
+  .workspace-toggle {
+    margin: 12px 0 16px;
   }
 
   .eco-nav {
     display: grid;
     grid-template-columns: repeat(2, minmax(0, 1fr));
-    gap: 7px;
-    margin-top: 10px;
+    gap: 6px;
   }
 
   .eco-nav-link {
     min-width: 0;
-    min-height: 43px;
     gap: 8px;
-    padding: 10px 8px;
+    padding: 11px 9px;
     font-size: 11px;
   }
 
   .eco-nav-icon {
-    width: 18px;
-    min-width: 18px;
-    font-size: 16px;
+    width: 15px;
+    min-width: 15px;
+    font-size: 15px;
   }
 
   .eco-nav-badge {
-    padding: 3px 4px;
+    padding: 4px;
     font-size: 8px;
   }
 
   .eco-sidebar-bottom {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    gap: 12px;
-    margin-top: 16px;
-    padding-top: 12px;
+    margin-top: 18px;
+    padding-top: 8px;
   }
 
   .eco-user {
-    min-width: 0;
-    padding: 4px 0;
-  }
-
-  .eco-logout {
-    width: auto;
-    flex-shrink: 0;
+    padding-top: 12px;
   }
 
   .eco-main {
     width: 100%;
-    padding: 25px 16px;
+    padding: 24px 16px;
   }
 
   .eco-header {
-    align-items: flex-start;
     flex-direction: column;
-    gap: 16px;
+    gap: 18px;
     margin-bottom: 28px;
   }
 
   .eco-header h1 {
-    font-size: 27px;
+    font-size: 26px;
   }
 
-  .eco-status {
-    padding: 10px 13px;
+  .eco-subtitle {
+    font-size: 13px;
+  }
+
+  .eco-section-heading h2,
+  .eco-panel h2 {
+    font-size: 19px;
   }
 
   .eco-metrics {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
     gap: 12px;
   }
 
   .eco-metric-card {
-    min-height: 170px;
-    padding: 15px 12px;
+    padding: 15px;
   }
 
   .eco-metric-top {
-    margin-bottom: 18px;
+    margin-bottom: 14px;
+  }
+
+  .eco-metric-icon {
+    width: 36px;
+    height: 36px;
+    font-size: 18px;
   }
 
   .eco-metric-value {
-    font-size: 25px;
+    font-size: 24px;
+  }
+
+  .eco-panel {
+    padding: 19px;
   }
 
   .eco-content-grid {
     gap: 16px;
   }
 
-  .eco-panel {
-    padding: 22px 17px;
+  .eco-usage-form {
+    gap: 16px 10px;
+  }
+
+  .eco-usage-form label {
+    font-size: 11px;
+  }
+
+  .eco-usage-form input {
+    padding: 0 9px;
+    font-size: 12px;
   }
 }
 
-/* =========================================
-   SMALL MOBILE
-========================================= */
+/* ---------- SMALL MOBILE ---------- */
 
-@media (max-width: 380px) {
+@media (max-width: 360px) {
   .eco-main {
-    padding-right: 12px;
-    padding-left: 12px;
+    padding: 20px 12px;
   }
 
   .eco-metrics {
-    grid-template-columns: 1fr;
+    grid-template-columns: minmax(0, 1fr);
   }
 
   .eco-usage-form {
-    grid-template-columns: 1fr;
+    grid-template-columns: minmax(0, 1fr);
   }
 
   .eco-submit {
     grid-column: 1;
   }
 
-  .eco-section-heading h2,
-  .eco-panel h2 {
-    font-size: 18px;
+  .eco-section-heading {
+    align-items: flex-start;
+  }
+}
+
+/* ---------- REDUCED MOTION ---------- */
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    transition-duration: 0.01ms !important;
+    animation-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
   }
 }

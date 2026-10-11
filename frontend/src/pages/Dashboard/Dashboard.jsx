@@ -1,3 +1,4 @@
+
 import { useCallback, useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import "./Dashboard.css";
@@ -47,7 +48,12 @@ const navigation = [
   { id: "overview", label: "My tracker", icon: "◉" },
   { id: "tips", label: "Eco tips", icon: "♧" },
   { id: "activities", label: "Green activities", icon: "✿" },
-  { id: "prompt-studio", label: "Prompt studio", icon: "✧", badge: "NEW" },
+  {
+    id: "prompt-studio",
+    label: "Prompt studio",
+    icon: "✧",
+    badge: "NEW",
+  },
   { id: "usage", label: "Record", icon: "▤" },
   { id: "reports", label: "Reports", icon: "▥" },
   { id: "profile", label: "Profile", icon: "♙" },
@@ -67,6 +73,9 @@ function Dashboard() {
   const [error, setError] = useState("");
   const [message, setMessage] = useState("");
   const [activeSection, setActiveSection] = useState("overview");
+
+  // NEW: Personal / Organization workspace selection
+  const [workspace, setWorkspace] = useState("personal");
 
   // Load dashboard data from the backend
   const loadDashboard = useCallback(async () => {
@@ -159,7 +168,9 @@ function Dashboard() {
       }
 
       setForm(initialForm);
-      setMessage("Your sustainability data was saved successfully.");
+      setMessage(
+        "Your sustainability data was saved successfully."
+      );
 
       await loadDashboard();
     } catch (err) {
@@ -192,6 +203,7 @@ function Dashboard() {
     <div className="eco-dashboard">
       {/* SIDEBAR */}
       <aside className="eco-sidebar">
+        {/* BRAND LOGO */}
         <a
           className="eco-brand"
           href="#overview"
@@ -206,6 +218,35 @@ function Dashboard() {
             <small>Sustainability Workspace</small>
           </span>
         </a>
+
+        {/* NEW: PERSONAL / ORGANIZATION TOGGLE */}
+        <div
+          className="workspace-toggle"
+          role="group"
+          aria-label="Select workspace"
+        >
+          <button
+            type="button"
+            className={`workspace-btn ${
+              workspace === "personal" ? "active" : ""
+            }`}
+            aria-pressed={workspace === "personal"}
+            onClick={() => setWorkspace("personal")}
+          >
+            Personal
+          </button>
+
+          <button
+            type="button"
+            className={`workspace-btn ${
+              workspace === "organization" ? "active" : ""
+            }`}
+            aria-pressed={workspace === "organization"}
+            onClick={() => setWorkspace("organization")}
+          >
+            Organization
+          </button>
+        </div>
 
         {/* ALL EIGHT NAVIGATION BUTTONS */}
         <nav className="eco-nav" aria-label="Main navigation">
@@ -542,9 +583,7 @@ function Dashboard() {
         >
           <p className="eco-eyebrow">YOUR ACCOUNT</p>
           <h2>Profile</h2>
-          <p>
-            Signed in as {userEmail}
-          </p>
+          <p>Signed in as {userEmail}</p>
         </section>
 
         <section
