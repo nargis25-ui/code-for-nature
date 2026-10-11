@@ -1,0 +1,79 @@
+.eco-page {
+  max-width: 850px;
+  margin: 0 auto;
+  padding: 30px;
+  color: #183b2b;
+  font-family: inherit;
+}
+
+.eco-page h1 {
+  font-size: 32px;
+  margin-bottom: 8px;
+}
+
+.eco-page > p {
+  color: #698074;
+  margin-bottom: 25px;
+}
+
+.eco-box {
+  background: white;
+  border: 1px solid #dce9df;
+  border-radius: 14px;
+  padding: 22px;
+}
+
+.eco-box label {
+  display: block;
+  margin-bottom: 10px;
+  font-weight: bold;
+}
+
+.eco-box input {
+  width: 100%;
+  box-sizing: border-box;
+  padding: 12px;
+  border: 1px solid #cbded0;
+  border-radius: 9px;
+  font: inherit;
+}
+
+.eco-warning,
+.eco-good {
+  margin-top: 20px;
+  padding: 20px;
+  border-radius: 14px;
+  line-height: 1.6;
+}
+
+.eco-warning {
+  background: #fff3e8;
+  border: 1px solid #f0b67e;
+  color: #8a3d12;
+}
+
+.eco-good {
+  background: #edf8ef;
+  border: 1px solid #a9d7b3;
+  color: #205c35;
+}
+
+.eco-warning h2,
+.eco-good h2 {
+  margin-top: 0;
+  font-size: 21px;
+}
+
+.eco-warning h3 {
+  font-size: 16px;
+}
+
+.eco-error {
+  color: #b42318 !important;
+}
+
+@media (max-width: 600px) {
+  .eco-page {
+    padding: 20px;
+  }
+}
