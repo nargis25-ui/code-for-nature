@@ -1,967 +1,375 @@
-// import React from "react";
-// import {
-//   FaThLarge,
-//   FaChartLine,
-//   FaFolder,
-//   FaFileInvoice,
-//   FaCog,
-//   FaSearch,
-//   FaBell,
-//   FaCheckCircle,
-//   FaClock,
-//   FaPauseCircle,
-//   FaPlus,
-// } from "react-icons/fa";
-
-// import "./Dashboard.css";
-
-// export default function Dashboard({ onLogout }) {
-//   return (
-//     <div className="dashboard">
-
-//       {/* SIDEBAR */}
-//       <aside className="sidebar">
-
-//         <div className="logo">
-//           <div className="logo-icon">🌿</div>
-//           <h2>GreenAI</h2>
-//         </div>
-
-//         <nav>
-//           <div className="nav-item active">
-//             <FaThLarge />
-//             <span>Dashboard</span>
-//           </div>
-
-//           <div className="nav-item">
-//             <FaChartLine />
-//             <span>Analytics</span>
-//           </div>
-
-//           <div className="nav-item">
-//             <FaFolder />
-//             <span>Projects</span>
-//           </div>
-
-//           <div className="nav-item">
-//             <FaFileInvoice />
-//             <span>Invoices</span>
-//           </div>
-
-//           <div className="nav-item">
-//             <FaCog />
-//             <span>Settings</span>
-//           </div>
-//         </nav>
-
-//         {/* PROFILE */}
-//         <div className="sidebar-profile">
-//           <div className="profile-avatar">JD</div>
-
-//           <div>
-//             <strong>John Doe</strong>
-//             <small>Admin</small>
-//           </div>
-//         </div>
-
-//       </aside>
-
-
-//       {/* MAIN CONTENT */}
-//       <main className="main-content">
-
-//         {/* TOP HEADER */}
-//         <header className="top-header">
-
-//           <div>
-//             <h1>Welcome to GreenAI</h1>
-//             <p>Wednesday, July 30 · Here's what's happening</p>
-//           </div>
-
-//           <div className="header-right">
-
-//             <div className="search-box">
-//               <FaSearch />
-//               <input
-//                 type="text"
-//                 placeholder="Search anything..."
-//               />
-//             </div>
-
-//             <div className="notification">
-//               <FaBell />
-//               <span></span>
-//             </div>
-
-//           </div>
-
-//         </header>
-
-
-//         {/* STAT CARDS */}
-//         <section className="stats-grid">
-
-//           <div className="stat-card">
-//             <div className="stat-top">
-//               <div>
-//                 <p>Total Revenue</p>
-//                 <h2>$48,295</h2>
-//                 <span className="positive">+12.5%</span>
-//               </div>
-
-//               <div className="stat-icon green">
-//                 ●
-//               </div>
-//             </div>
-//           </div>
-
-
-//           <div className="stat-card">
-//             <div className="stat-top">
-//               <div>
-//                 <p>Active Projects</p>
-//                 <h2>24</h2>
-//                 <span className="positive">+3 this month</span>
-//               </div>
-
-//               <div className="stat-icon blue">
-//                 ●
-//               </div>
-//             </div>
-//           </div>
-
-
-//           <div className="stat-card">
-//             <div className="stat-top">
-//               <div>
-//                 <p>Team Members</p>
-//                 <h2>138</h2>
-//                 <span className="positive">+8 onboarded</span>
-//               </div>
-
-//               <div className="stat-icon purple">
-//                 ●
-//               </div>
-//             </div>
-//           </div>
-
-
-//           <div className="stat-card">
-//             <div className="stat-top">
-//               <div>
-//                 <p>Completion Rate</p>
-//                 <h2>87.4%</h2>
-//                 <span className="negative">-2.1% vs last month</span>
-//               </div>
-
-//               <div className="stat-icon orange">
-//                 ●
-//               </div>
-//             </div>
-//           </div>
-
-//         </section>
-
-
-//         {/* CHART SECTION */}
-//         <section className="middle-grid">
-
-//           {/* REVENUE */}
-//           <div className="dashboard-card revenue-card">
-
-//             <div className="card-header">
-//               <div>
-//                 <h3>Monthly Revenue</h3>
-//                 <p>Jan – Dec 2025</p>
-//               </div>
-
-//               <div className="chart-options">
-//                 <span>1M</span>
-//                 <span>3M</span>
-//                 <span>6M</span>
-//                 <span className="selected">1Y</span>
-//               </div>
-//             </div>
-
-
-//             <div className="bar-chart">
-
-//               <div className="bar" style={{ height: "35%" }}>
-//                 <span>Jan</span>
-//               </div>
-
-//               <div className="bar" style={{ height: "50%" }}>
-//                 <span>Feb</span>
-//               </div>
-
-//               <div className="bar" style={{ height: "42%" }}>
-//                 <span>Mar</span>
-//               </div>
-
-//               <div className="bar" style={{ height: "65%" }}>
-//                 <span>Apr</span>
-//               </div>
-
-//               <div className="bar" style={{ height: "70%" }}>
-//                 <span>May</span>
-//               </div>
-
-//               <div className="bar" style={{ height: "78%" }}>
-//                 <span>Jun</span>
-//               </div>
-
-//               <div className="bar" style={{ height: "70%" }}>
-//                 <span>Jul</span>
-//               </div>
-
-//               <div className="bar" style={{ height: "85%" }}>
-//                 <span>Aug</span>
-//               </div>
-
-//               <div className="bar" style={{ height: "62%" }}>
-//                 <span>Sep</span>
-//               </div>
-
-//               <div className="bar" style={{ height: "75%" }}>
-//                 <span>Oct</span>
-//               </div>
-
-//               <div className="bar" style={{ height: "55%" }}>
-//                 <span>Nov</span>
-//               </div>
-
-//               <div className="bar current" style={{ height: "82%" }}>
-//                 <span>Dec</span>
-//               </div>
-
-//             </div>
-
-//           </div>
-
-
-//           {/* TASK STATUS */}
-//           <div className="dashboard-card task-card">
-
-//             <div className="card-header">
-//               <div>
-//                 <h3>Task Status</h3>
-//                 <p>All active projects</p>
-//               </div>
-//             </div>
-
-
-//             <div className="task-content">
-
-//               <div className="donut">
-//                 <div className="donut-center">
-//                   <strong>100</strong>
-//                   <small>tasks</small>
-//                 </div>
-//               </div>
-
-
-//               <div className="task-list">
-
-//                 <div>
-//                   <span className="dot completed"></span>
-//                   Completed <strong>42%</strong>
-//                 </div>
-
-//                 <div>
-//                   <span className="dot progress"></span>
-//                   In Progress <strong>35%</strong>
-//                 </div>
-
-//                 <div>
-//                   <span className="dot planning"></span>
-//                   Planning <strong>15%</strong>
-//                 </div>
-
-//                 <div>
-//                   <span className="dot hold"></span>
-//                   On Hold <strong>8%</strong>
-//                 </div>
-
-//               </div>
-
-//             </div>
-
-//           </div>
-
-//         </section>
-
-
-//         {/* BOTTOM SECTION */}
-//         <section className="bottom-grid">
-
-//           {/* PROJECTS */}
-//           <div className="dashboard-card projects-card">
-
-//             <div className="card-title-row">
-//               <h3>Active Projects</h3>
-//               <button>View all →</button>
-//             </div>
-
-
-//             <div className="table-wrapper">
-
-//               <table>
-
-//                 <thead>
-//                   <tr>
-//                     <th>Project</th>
-//                     <th>Progress</th>
-//                     <th>Priority</th>
-//                     <th>Due</th>
-//                     <th>Team</th>
-//                   </tr>
-//                 </thead>
-
-//                 <tbody>
-
-//                   <tr>
-//                     <td>
-//                       <strong>GreenAI Platform v2</strong>
-//                       <small>Active</small>
-//                     </td>
-
-//                     <td>
-//                       <div className="progress-row">
-//                         <div className="progress-bar">
-//                           <span style={{ width: "78%" }}></span>
-//                         </div>
-//                         78%
-//                       </div>
-//                     </td>
-
-//                     <td>
-//                       <span className="priority high">High</span>
-//                     </td>
-
-//                     <td>Aug 15</td>
-
-//                     <td>
-//                       <div className="team">
-//                         <span>J</span>
-//                         <span>A</span>
-//                         <span>M</span>
-//                       </div>
-//                     </td>
-//                   </tr>
-
-
-//                   <tr>
-//                     <td>
-//                       <strong>Eco Analytics Dashboard</strong>
-//                       <small>Active</small>
-//                     </td>
-
-//                     <td>
-//                       <div className="progress-row">
-//                         <div className="progress-bar">
-//                           <span style={{ width: "45%" }}></span>
-//                         </div>
-//                         45%
-//                       </div>
-//                     </td>
-
-//                     <td>
-//                       <span className="priority medium">Medium</span>
-//                     </td>
-
-//                     <td>Sep 2</td>
-
-//                     <td>
-//                       <div className="team">
-//                         <span>R</span>
-//                         <span>T</span>
-//                       </div>
-//                     </td>
-//                   </tr>
-
-
-//                   <tr>
-//                     <td>
-//                       <strong>Carbon Offset Tracker</strong>
-//                       <small>Review</small>
-//                     </td>
-
-//                     <td>
-//                       <div className="progress-row">
-//                         <div className="progress-bar">
-//                           <span style={{ width: "92%" }}></span>
-//                         </div>
-//                         92%
-//                       </div>
-//                     </td>
-
-//                     <td>
-//                       <span className="priority high">High</span>
-//                     </td>
-
-//                     <td>Jul 31</td>
-
-//                     <td>
-//                       <div className="team">
-//                         <span>J</span>
-//                         <span>S</span>
-//                         <span>K</span>
-//                       </div>
-//                     </td>
-//                   </tr>
-
-
-//                   <tr>
-//                     <td>
-//                       <strong>Sustainability Report Q3</strong>
-//                       <small>Active</small>
-//                     </td>
-
-//                     <td>
-//                       <div className="progress-row">
-//                         <div className="progress-bar">
-//                           <span style={{ width: "60%" }}></span>
-//                         </div>
-//                         60%
-//                       </div>
-//                     </td>
-
-//                     <td>
-//                       <span className="priority low">Low</span>
-//                     </td>
-
-//                     <td>Sep 30</td>
-
-//                     <td>
-//                       <div className="team">
-//                         <span>M</span>
-//                         <span>T</span>
-//                       </div>
-//                     </td>
-//                   </tr>
-
-//                 </tbody>
-
-//               </table>
-
-//             </div>
-
-//           </div>
-
-
-//           {/* RECENT ACTIVITY */}
-//           <div className="dashboard-card activity-card">
-
-//             <h3>Recent Activity</h3>
-
-//             <div className="activity">
-
-//               <div className="activity-icon blue-bg">
-//                 AL
-//               </div>
-
-//               <div>
-//                 <p>
-//                   <strong>Alice Lee</strong> completed milestone
-//                 </p>
-//                 <span>
-//                   GreenAI v2 beta
-//                 </span>
-//                 <small>2 min ago</small>
-//               </div>
-
-//             </div>
-
-
-//             <div className="activity">
-
-//               <div className="activity-icon green-bg">
-//                 MK
-//               </div>
-
-//               <div>
-//                 <p>
-//                   <strong>Mark Kim</strong> pushed commit to
-//                 </p>
-//                 <span>Carbon Tracker</span>
-//                 <small>18 min ago</small>
-//               </div>
-
-//             </div>
-
-
-//             <div className="activity">
-
-//               <div className="activity-icon purple-bg">
-//                 RB
-//               </div>
-
-//               <div>
-//                 <p>
-//                   <strong>Rachel Brown</strong> commented on
-//                 </p>
-//                 <span>Eco Analytics</span>
-//                 <small>1 hr ago</small>
-//               </div>
-
-//             </div>
-
-
-//             <div className="activity">
-
-//               <div className="activity-icon orange-bg">
-//                 TN
-//               </div>
-
-//               <div>
-//                 <p>
-//                   <strong>Tom Nguyen</strong> created task in
-//                 </p>
-//                 <span>Smart Grid</span>
-//                 <small>3 hr ago</small>
-//               </div>
-
-//             </div>
-
-
-//             <div className="activity">
-
-//               <div className="activity-icon cyan-bg">
-//                 SF
-//               </div>
-
-//               <div>
-//                 <p>
-//                   <strong>Sara Fox</strong> reviewed PR for
-//                 </p>
-//                 <span>Carbon Tracker</span>
-//                 <small>5 hr ago</small>
-//               </div>
-
-//             </div>
-
-//           </div>
-
-//         </section>
-
-
-//         {/* LOGOUT */}
-//         <button className="logout-button" onClick={onLogout}>
-//           Logout
-//         </button>
-
-//       </main>
-
-//     </div>
-//   );
-// }
-
-
-
-
+import { useCallback, useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
-import {
-  FaThLarge,
-  FaChartLine,
-  FaFolder,
-  FaFileInvoice,
-  FaCog,
-  FaSearch,
-  FaBell,
-  FaCheckCircle,
-  FaClock,
-  FaPauseCircle,
-} from "react-icons/fa";
-
 import "./Dashboard.css";
+
+const API_BASE = import.meta.env.VITE_API_BASE_URL || "http://localhost:5000";
+
+const initialForm = {
+  electricity: "",
+  water: "",
+  ewaste: "",
+  aiUsage: "",
+};
+
+const metrics = [
+  {
+    key: "electricity",
+    label: "Electricity usage",
+    unit: "kWh",
+    icon: "⚡",
+    description: "Energy consumed",
+  },
+  {
+    key: "water",
+    label: "Water usage",
+    unit: "litres",
+    icon: "💧",
+    description: "Water consumed",
+  },
+  {
+    key: "ewaste",
+    label: "E-waste",
+    unit: "kg",
+    icon: "♻️",
+    description: "Electronic waste recorded",
+  },
+  {
+    key: "aiUsage",
+    label: "AI usage",
+    unit: "prompts",
+    icon: "🤖",
+    description: "AI prompts recorded",
+  },
+];
 
 function Dashboard() {
   const navigate = useNavigate();
+  const userEmail = sessionStorage.getItem("userEmail") || "EcoAI User";
 
-  const userEmail =
-    sessionStorage.getItem("userEmail") || "User";
+  const [dashboard, setDashboard] = useState(null);
+  const [form, setForm] = useState(initialForm);
+  const [loading, setLoading] = useState(true);
+  const [saving, setSaving] = useState(false);
+  const [error, setError] = useState("");
+  const [message, setMessage] = useState("");
+
+  const loadDashboard = useCallback(async () => {
+    try {
+      setError("");
+      const response = await fetch(`${API_BASE}/api/dashboard`);
+
+      if (!response.ok) {
+        throw new Error("Could not load dashboard data.");
+      }
+
+      const data = await response.json();
+      setDashboard(data);
+    } catch {
+      setError(
+        "Could not connect to the backend. Check that your backend server is running on port 5000."
+      );
+    } finally {
+      setLoading(false);
+    }
+  }, []);
+
+  useEffect(() => {
+    loadDashboard();
+  }, [loadDashboard]);
+
+  const handleChange = (event) => {
+    const { name, value } = event.target;
+    setForm((previous) => ({ ...previous, [name]: value }));
+  };
+
+  const handleSubmit = async (event) => {
+    event.preventDefault();
+    setError("");
+    setMessage("");
+    setSaving(true);
+
+    const payload = {
+      electricity: Number(form.electricity),
+      water: Number(form.water),
+      ewaste: Number(form.ewaste),
+      aiUsage: Number(form.aiUsage),
+    };
+
+    try {
+      const response = await fetch(`${API_BASE}/api/usage`, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(payload),
+      });
+
+      const result = await response.json();
+
+      if (!response.ok) {
+        throw new Error(result.message || "Unable to save usage data.");
+      }
+
+      setForm(initialForm);
+      setMessage("Your sustainability data was saved successfully.");
+      await loadDashboard();
+    } catch (err) {
+      setError(
+        err.message || "Could not save data. Please check your backend connection."
+      );
+    } finally {
+      setSaving(false);
+    }
+  };
 
   const handleLogout = () => {
     sessionStorage.removeItem("isLoggedIn");
     sessionStorage.removeItem("userEmail");
-
     navigate("/login", { replace: true });
   };
 
+  const totals = dashboard?.totals || {
+    electricity: 0,
+    water: 0,
+    ewaste: 0,
+    aiUsage: 0,
+  };
+
   return (
-    <div className="dashboard">
+    <div className="eco-dashboard">
+      <aside className="eco-sidebar">
+        <a className="eco-brand" href="#overview">
+          <span className="eco-brand-icon">🌱</span>
+          <span>
+            <strong>EcoAI</strong>
+            <small>Sustainability Tracker</small>
+          </span>
+        </a>
 
-      {/* SIDEBAR */}
-      <aside className="sidebar">
-
-        <div className="logo">
-          <div className="logo-icon">🌿</div>
-          <h2>GreenAI</h2>
-        </div>
-
-        <nav>
-
-          <div className="nav-item active">
-            <FaThLarge />
-            <span>Dashboard</span>
-          </div>
-
-          <div className="nav-item">
-            <FaChartLine />
-            <span>Analytics</span>
-          </div>
-
-          <div className="nav-item">
-            <FaFolder />
-            <span>Projects</span>
-          </div>
-
-          <div className="nav-item">
-            <FaFileInvoice />
-            <span>Reports</span>
-          </div>
-
-          <div className="nav-item">
-            <FaCog />
-            <span>Settings</span>
-          </div>
-
+        <nav className="eco-nav" aria-label="Main navigation">
+          <a className="eco-nav-link active" href="#overview">
+            <span>▦</span> Overview
+          </a>
+          <a className="eco-nav-link" href="#usage">
+            <span>＋</span> Record usage
+          </a>
+          <a className="eco-nav-link" href="#tips">
+            <span>✦</span> Green tips
+          </a>
         </nav>
 
-        {/* PROFILE */}
-        <div className="sidebar-profile">
-
-          <div className="profile-avatar">
-            {userEmail.charAt(0).toUpperCase()}
+        <div className="eco-sidebar-bottom">
+          <div className="eco-user">
+            <div className="eco-avatar">
+              {userEmail.charAt(0).toUpperCase()}
+            </div>
+            <div className="eco-user-info">
+              <strong>{userEmail}</strong>
+              <small>EcoAI user</small>
+            </div>
           </div>
-
-          <div>
-            <strong>{userEmail}</strong>
-            <small>GreenAI User</small>
-          </div>
-
+          <button className="eco-logout" onClick={handleLogout}>
+            ↪ Log out
+          </button>
         </div>
-
       </aside>
 
-      {/* MAIN CONTENT */}
-      <main className="main-content">
-
-        {/* HEADER */}
-        <header className="top-header">
-
+      <main className="eco-main" id="overview">
+        <header className="eco-header">
           <div>
-            <h1>Welcome to GreenAI 🌿</h1>
-
-            <p>
-              Here's what's happening with your projects
+            <p className="eco-eyebrow">YOUR SUSTAINABILITY SPACE</p>
+            <h1>Good to see you again 🌿</h1>
+            <p className="eco-subtitle">
+              Understand your usage and make more sustainable choices.
             </p>
           </div>
-
-          <div className="header-right">
-
-            <div className="search-box">
-              <FaSearch />
-
-              <input
-                type="text"
-                placeholder="Search anything..."
-              />
-            </div>
-
-            <div className="notification">
-              <FaBell />
-              <span></span>
-            </div>
-
+          <div className="eco-status">
+            <span className="eco-status-dot" />
+            EcoAI dashboard
           </div>
-
         </header>
 
-        {/* STAT CARDS */}
-        <section className="stats-grid">
+        {error && (
+          <div className="eco-alert eco-alert-error" role="alert">
+            {error}
+          </div>
+        )}
 
-          <div className="stat-card">
-            <div className="stat-top">
+        {message && (
+          <div className="eco-alert eco-alert-success" role="status">
+            {message}
+          </div>
+        )}
 
-              <div>
-                <p>Total Projects</p>
-                <h2>24</h2>
-                <span className="positive">
-                  +3 this month
-                </span>
-              </div>
-
-              <div className="stat-icon green">
-                <FaFolder />
-              </div>
-
+        <section className="eco-section">
+          <div className="eco-section-heading">
+            <div>
+              <p className="eco-eyebrow">YOUR IMPACT AT A GLANCE</p>
+              <h2>Usage overview</h2>
             </div>
+            <button
+              className="eco-refresh"
+              onClick={loadDashboard}
+              disabled={loading}
+            >
+              ↻ Refresh
+            </button>
           </div>
 
-          <div className="stat-card">
-            <div className="stat-top">
-
-              <div>
-                <p>Completed</p>
-                <h2>18</h2>
-                <span className="positive">
-                  +12.5%
-                </span>
-              </div>
-
-              <div className="stat-icon blue">
-                <FaCheckCircle />
-              </div>
-
-            </div>
+          <div className="eco-metrics">
+            {metrics.map((metric) => (
+              <article className="eco-metric-card" key={metric.key}>
+                <div className="eco-metric-top">
+                  <span className="eco-metric-icon">{metric.icon}</span>
+                  <span className="eco-metric-unit">{metric.unit}</span>
+                </div>
+                <p className="eco-metric-label">{metric.label}</p>
+                <div className="eco-metric-value">
+                  {loading
+                    ? "..."
+                    : Number(totals[metric.key] || 0).toLocaleString(
+                        undefined,
+                        { maximumFractionDigits: 2 }
+                      )}
+                </div>
+                <p className="eco-metric-description">{metric.description}</p>
+              </article>
+            ))}
           </div>
 
-          <div className="stat-card">
-            <div className="stat-top">
-
-              <div>
-                <p>In Progress</p>
-                <h2>4</h2>
-                <span className="positive">
-                  Active
-                </span>
-              </div>
-
-              <div className="stat-icon purple">
-                <FaClock />
-              </div>
-
-            </div>
-          </div>
-
-          <div className="stat-card">
-            <div className="stat-top">
-
-              <div>
-                <p>On Hold</p>
-                <h2>2</h2>
-                <span className="negative">
-                  Needs attention
-                </span>
-              </div>
-
-              <div className="stat-icon orange">
-                <FaPauseCircle />
-              </div>
-
-            </div>
-          </div>
-
+          <p className="eco-record-count">
+            {loading
+              ? "Loading saved records..."
+              : `${dashboard?.recordsCount ?? 0} usage record(s) saved`}
+          </p>
         </section>
 
-        {/* MIDDLE SECTION */}
-        <section className="middle-grid">
-
-          {/* REVENUE */}
-          <div className="dashboard-card revenue-card">
-
-            <div className="card-header">
-
+        <section className="eco-content-grid">
+          <div className="eco-panel" id="usage">
+            <div className="eco-panel-heading">
               <div>
-                <h3>Project Progress</h3>
-                <p>Current project performance</p>
+                <p className="eco-eyebrow">TRACK YOUR FOOTPRINT</p>
+                <h2>Record your usage</h2>
               </div>
-
-              <div className="chart-options">
-                <span>1M</span>
-                <span>3M</span>
-                <span className="selected">6M</span>
-                <span>1Y</span>
-              </div>
-
+              <span className="eco-panel-emoji">📝</span>
             </div>
 
-            <div className="bar-chart">
+            <p className="eco-panel-description">
+              Enter your usage figures below. Use zero for any category you
+              don't want to record right now.
+            </p>
 
-              <div className="bar" style={{ height: "40%" }}>
-                <span>Jan</span>
-              </div>
+            <form className="eco-usage-form" onSubmit={handleSubmit}>
+              <label>
+                Electricity (kWh)
+                <input
+                  type="number"
+                  name="electricity"
+                  min="0"
+                  step="any"
+                  value={form.electricity}
+                  onChange={handleChange}
+                  placeholder="e.g. 120"
+                  required
+                />
+              </label>
 
-              <div className="bar" style={{ height: "55%" }}>
-                <span>Feb</span>
-              </div>
+              <label>
+                Water (litres)
+                <input
+                  type="number"
+                  name="water"
+                  min="0"
+                  step="any"
+                  value={form.water}
+                  onChange={handleChange}
+                  placeholder="e.g. 500"
+                  required
+                />
+              </label>
 
-              <div className="bar" style={{ height: "48%" }}>
-                <span>Mar</span>
-              </div>
+              <label>
+                E-waste (kg)
+                <input
+                  type="number"
+                  name="ewaste"
+                  min="0"
+                  step="any"
+                  value={form.ewaste}
+                  onChange={handleChange}
+                  placeholder="e.g. 2"
+                  required
+                />
+              </label>
 
-              <div className="bar" style={{ height: "70%" }}>
-                <span>Apr</span>
-              </div>
+              <label>
+                AI prompts
+                <input
+                  type="number"
+                  name="aiUsage"
+                  min="0"
+                  step="1"
+                  value={form.aiUsage}
+                  onChange={handleChange}
+                  placeholder="e.g. 15"
+                  required
+                />
+              </label>
 
-              <div className="bar" style={{ height: "80%" }}>
-                <span>May</span>
-              </div>
-
-              <div className="bar current" style={{ height: "90%" }}>
-                <span>Jun</span>
-              </div>
-
-            </div>
-
-          </div>
-
-          {/* TASK STATUS */}
-          <div className="dashboard-card task-card">
-
-            <div className="card-header">
-              <div>
-                <h3>Task Status</h3>
-                <p>All active projects</p>
-              </div>
-            </div>
-
-            <div className="task-list">
-
-              <div>
-                <span className="dot completed"></span>
-                Completed
-                <strong>42%</strong>
-              </div>
-
-              <div>
-                <span className="dot progress"></span>
-                In Progress
-                <strong>35%</strong>
-              </div>
-
-              <div>
-                <span className="dot planning"></span>
-                Planning
-                <strong>15%</strong>
-              </div>
-
-              <div>
-                <span className="dot hold"></span>
-                On Hold
-                <strong>8%</strong>
-              </div>
-
-            </div>
-
-          </div>
-
-        </section>
-
-        {/* PROJECTS */}
-        <section className="bottom-grid">
-
-          <div className="dashboard-card projects-card">
-
-            <div className="card-title-row">
-
-              <h3>Active Projects</h3>
-
-              <button>
-                View all →
+              <button className="eco-submit" type="submit" disabled={saving}>
+                {saving ? "Saving..." : "Save usage data →"}
               </button>
-
-            </div>
-
-            <div className="table-wrapper">
-
-              <table>
-
-                <thead>
-                  <tr>
-                    <th>Project</th>
-                    <th>Progress</th>
-                    <th>Priority</th>
-                    <th>Status</th>
-                  </tr>
-                </thead>
-
-                <tbody>
-
-                  <tr>
-                    <td>
-                      <strong>GreenAI Platform</strong>
-                      <small>Active</small>
-                    </td>
-
-                    <td>
-                      78%
-                    </td>
-
-                    <td>
-                      <span className="priority high">
-                        High
-                      </span>
-                    </td>
-
-                    <td>
-                      Active
-                    </td>
-                  </tr>
-
-                  <tr>
-                    <td>
-                      <strong>Eco Analytics</strong>
-                      <small>Active</small>
-                    </td>
-
-                    <td>
-                      65%
-                    </td>
-
-                    <td>
-                      <span className="priority medium">
-                        Medium
-                      </span>
-                    </td>
-
-                    <td>
-                      In Progress
-                    </td>
-                  </tr>
-
-                  <tr>
-                    <td>
-                      <strong>Carbon Tracker</strong>
-                      <small>Review</small>
-                    </td>
-
-                    <td>
-                      92%
-                    </td>
-
-                    <td>
-                      <span className="priority high">
-                        High
-                      </span>
-                    </td>
-
-                    <td>
-                      Review
-                    </td>
-                  </tr>
-
-                </tbody>
-
-              </table>
-
-            </div>
-
+            </form>
           </div>
 
+          <div className="eco-panel eco-tips-panel" id="tips">
+            <p className="eco-eyebrow">SMALL STEPS, REAL CHANGE</p>
+            <h2>Green tips for you</h2>
+            <p className="eco-panel-description">
+              Simple habits can help reduce unnecessary resource use.
+            </p>
+
+            <div className="eco-tip">
+              <span>⚡</span>
+              <div>
+                <strong>Save energy</strong>
+                <p>Switch off devices and lights when they aren't needed.</p>
+              </div>
+            </div>
+
+            <div className="eco-tip">
+              <span>💧</span>
+              <div>
+                <strong>Use water mindfully</strong>
+                <p>Fix leaks and avoid letting water run unnecessarily.</p>
+              </div>
+            </div>
+
+            <div className="eco-tip">
+              <span>♻️</span>
+              <div>
+                <strong>Extend device life</strong>
+                <p>Repair, reuse, or responsibly recycle electronics.</p>
+              </div>
+            </div>
+
+            <div className="eco-tip">
+              <span>🤖</span>
+              <div>
+                <strong>Make AI prompts count</strong>
+                <p>Write clear prompts to reduce repeated requests.</p>
+              </div>
+            </div>
+
+            <p className="eco-disclaimer">
+              Usage totals are based on the figures entered. They are not
+              independently measured environmental impact estimates.
+            </p>
+          </div>
         </section>
 
-        {/* LOGOUT */}
-        <button
-          className="logout-button"
-          onClick={handleLogout}
-        >
-          Logout
-        </button>
-
+        <footer className="eco-footer">
+          EcoAI · Track thoughtfully. Choose sustainably.
+        </footer>
       </main>
-
     </div>
   );
 }

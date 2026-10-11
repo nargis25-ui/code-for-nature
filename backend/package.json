@@ -1,15 +1,13 @@
 {
-  "name": "backend",
+  "name": "ecoai-backend",
   "version": "1.0.0",
-  "description": "",
+  "description": "EcoAI Sustainability Tracker API",
   "main": "server.js",
   "scripts": {
     "dev": "nodemon server.js",
     "start": "node server.js"
   },
-  
-  "keywords": [],
-  "author": "",
+  "keywords": ["ecoai", "sustainability"],
   "license": "ISC",
   "type": "commonjs",
   "dependencies": {
@@ -20,14 +18,4 @@
   "devDependencies": {
     "nodemon": "^3.1.14"
   }
-
-  {
-  "electricity": 120,
-  "water": 500,
-  "ewaste": 2,
-  "aiUsage": 15
- 
 }
-
-}
-
