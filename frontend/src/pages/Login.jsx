@@ -1,4 +1,5 @@
 // import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 // import {
 //   FaEnvelope,
@@ -306,6 +307,7 @@ import {
 import "./Login.css";
 
 function Login() {
+  const navigate = useNavigate();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
@@ -315,9 +317,16 @@ function Login() {
   const handleLogin = (e) => {
     e.preventDefault();
 
-    console.log("Email:", email);
-    console.log("Password:", password);
-    console.log("Remember me:", rememberMe);
+    if (!email.trim() || !password.trim()) {
+      alert("Please enter email and password.");
+      return;
+    }
+
+    sessionStorage.setItem("isLoggedIn", "true");
+    sessionStorage.setItem("userEmail", email.trim());
+    sessionStorage.setItem("rememberMe", String(rememberMe));
+
+    navigate("/dashboard", { replace: true });
   };
 
   const handleGoogleLogin = () => {
