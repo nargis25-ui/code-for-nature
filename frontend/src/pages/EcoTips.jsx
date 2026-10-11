@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Link } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 import {
   FaLeaf,
   FaHome,
@@ -20,6 +20,7 @@ import {
 } from "react-icons/fa";
 
 import "./EcoTips.css";
+import "./Dashboard/Dashboard.css";
 
 const tips = [
   {
@@ -84,76 +85,179 @@ const tips = [
   },
 ];
 
+const navigation = [
+  { id: "overview", label: "My tracker", icon: "◉", path: "/dashboard" },
+  { id: "tips", label: "Eco tips", icon: "♧", path: "/eco-tips" },
+  {
+    id: "Optimizer",
+    label: "Green Optimizer",
+    icon: "✿",
+    path: "/green-optimization",
+  },
+  {
+    id: "prompt-studio",
+    label: "Prompt studio",
+    icon: "✧",
+    badge: "NEW",
+    path: "/prompt-studio",
+  },
+  { id: "usage", label: "Record", icon: "▤", path: "/dashboard#usage" },
+  { id: "reports", label: "Reports", icon: "▥", path: "/reports" },
+  { id: "rewards", label: "Rewards", icon: "★", path: "/rewards" },
+  { id: "profile", label: "Profile", icon: "♙", path: "/profile" },
+  { id: "settings", label: "Settings", icon: "⚙", path: "/settings" },
+];
+
 export default function EcoTips() {
+  const navigate = useNavigate();
+  const location = useLocation();
+
   const [completed, setCompleted] = useState([3, 6]);
+  const [workspace, setWorkspace] = useState("personal");
+
+  const userEmail =
+    sessionStorage.getItem("userEmail") || "EcoAI User";
 
   function toggleDone(id) {
-    if (completed.includes(id)) {
-      setCompleted(completed.filter((item) => item !== id));
-    } else {
-      setCompleted([...completed, id]);
-    }
+    setCompleted((previous) =>
+      previous.includes(id)
+        ? previous.filter((item) => item !== id)
+        : [...previous, id]
+    );
   }
 
   const percentage = Math.round(
     (completed.length / tips.length) * 100
   );
 
-  return (
-    <div className="eco-layout">
-      <aside className="eco-sidebar">
-        <div className="eco-brand">
-          <span className="brand-icon">
-            <FaLeaf />
-          </span>
+  function handleNavigation(event, item) {
+    event.preventDefault();
 
-          <div>
-            <h2>Green AI</h2>
-            <p>Dashboard</p>
-          </div>
+    if (item.path === "/dashboard#usage") {
+      navigate("/dashboard");
+
+      setTimeout(() => {
+        document.getElementById("usage")?.scrollIntoView({
+          behavior: "smooth",
+          block: "start",
+        });
+      }, 100);
+
+      return;
+    }
+
+    navigate(item.path);
+  }
+
+  function handleLogout() {
+    sessionStorage.removeItem("isLoggedIn");
+    sessionStorage.removeItem("userEmail");
+    sessionStorage.removeItem("rememberMe");
+
+    navigate("/login", { replace: true });
+  }
+
+  return (
+    <div className="eco-dashboard">
+      <aside className="eco-sidebar">
+        <a
+          className="eco-brand"
+          href="/dashboard"
+          onClick={(event) => {
+            event.preventDefault();
+            navigate("/dashboard");
+          }}
+        >
+          <span className="eco-brand-icon">🌿</span>
+          <span>
+            <strong>verdant.ai</strong>
+            <small>Sustainability Workspace</small>
+          </span>
+        </a>
+
+        <div
+          className="workspace-toggle"
+          role="group"
+          aria-label="Select workspace"
+        >
+          <button
+            type="button"
+            className={`workspace-btn ${
+              workspace === "personal" ? "active" : ""
+            }`}
+            aria-pressed={workspace === "personal"}
+            onClick={() => setWorkspace("personal")}
+          >
+            Personal
+          </button>
+
+          <button
+            type="button"
+            className={`workspace-btn ${
+              workspace === "organization" ? "active" : ""
+            }`}
+            aria-pressed={workspace === "organization"}
+            onClick={() => setWorkspace("organization")}
+          >
+            Organization
+          </button>
         </div>
 
-        <nav className="eco-nav">
-          <Link to="/dashboard">
-            <FaHome /> <span>Home</span>
-          </Link>
+        <nav className="eco-nav" aria-label="Main navigation">
+          {navigation.map((item) => {
+            const isActive =
+              item.id === "overview" || item.id === "usage"
+                ? location.pathname === "/dashboard"
+                : location.pathname === item.path;
 
-          <Link to="/record">
-            <FaList /> <span>Tracker</span>
-          </Link>
+            return (
+              <a
+                key={item.id}
+                className={`eco-nav-link ${isActive ? "active" : ""}`}
+                href={item.path}
+                onClick={(event) => handleNavigation(event, item)}
+              >
+                <span className="eco-nav-icon">{item.icon}</span>
+                <span>{item.label}</span>
 
-          <Link to="/reports">
-            <FaCalendarAlt /> <span>Carbon</span>
-          </Link>
-
-          <Link to="/reports">
-            <FaTrophy /> <span>Rewards</span>
-          </Link>
-
-          <Link className="active" to="/eco-tips">
-            <FaLightbulb /> <span>Eco Tips</span>
-            <i />
-          </Link>
-
-          <Link to="/profile">
-            <FaUser /> <span>Profile</span>
-          </Link>
-
-          <Link to="/settings">
-            <FaCog /> <span>Settings</span>
-          </Link>
+                {item.badge && (
+                  <span className="eco-nav-badge">
+                    {item.badge}
+                  </span>
+                )}
+              </a>
+            );
+          })}
         </nav>
 
-        <div className="eco-sidebar-footer">
-          v1.0.0 · Green AI
+        <div className="eco-sidebar-bottom">
+          <div className="eco-user">
+            <div className="eco-avatar">
+              {userEmail.charAt(0).toUpperCase()}
+            </div>
+
+            <div className="eco-user-info">
+              <strong>{userEmail}</strong>
+              <small>EcoAI user</small>
+            </div>
+          </div>
+
+          <button
+            type="button"
+            className="eco-logout"
+            onClick={handleLogout}
+          >
+            ↪ Log out
+          </button>
         </div>
       </aside>
 
       <main className="eco-main">
         <header className="eco-header">
           <div>
-            <h2>Eco Tips</h2>
-            <p>
+            <p className="eco-eyebrow">YOUR SUSTAINABILITY SPACE</p>
+            <h1>Eco Tips 🌱</h1>
+            <p className="eco-subtitle">
               {new Date().toLocaleDateString("en-US", {
                 weekday: "long",
                 month: "long",
@@ -163,24 +267,18 @@ export default function EcoTips() {
             </p>
           </div>
 
-          <div className="eco-user">
-            <FaBell className="eco-bell" />
-
-            <div className="user-avatar">N</div>
-
-            <div>
-              <strong>Nargiz</strong>
-              <p>Eco Member</p>
-            </div>
+          <div className="eco-status">
+            <span className="eco-status-dot" />
+            Sustainability Workspace
           </div>
         </header>
 
         <section className="eco-content">
           <div className="eco-title-row">
             <div>
-              <h1>Eco Tips</h1>
+              <h2>Small steps, real change</h2>
               <p>
-                Follow these tips to reduce your AI environmental impact
+                Follow these tips to reduce your AI environmental impact.
               </p>
             </div>
 
@@ -233,23 +331,15 @@ export default function EcoTips() {
                   )}
 
                   <div className="tip-icon">{tip.icon}</div>
-
-                  <span className="tip-category">
-                    {tip.category}
-                  </span>
-
+                  <span className="tip-category">{tip.category}</span>
                   <h3>{tip.title}</h3>
-
-                  <p className="tip-description">
-                    {tip.description}
-                  </p>
+                  <p className="tip-description">{tip.description}</p>
 
                   <div className="tip-footer">
-                    <span className="tip-impact">
-                      {tip.impact}
-                    </span>
+                    <span className="tip-impact">{tip.impact}</span>
 
                     <button
+                      type="button"
                       onClick={() => toggleDone(tip.id)}
                     >
                       {isDone ? (

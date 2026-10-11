@@ -372,3 +372,52 @@
     height: 170px;
   }
 }
+
+
+/* FULL BROWSER WIDTH FIX */
+
+html,
+body,
+#root {
+  width: 100%;
+  min-width: 100%;
+  min-height: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  overflow-x: hidden;
+}
+
+/* LOGIN PAGE BACKGROUND */
+
+.login-page {
+  width: 100%;
+  min-height: 100vh;
+  min-height: 100dvh;
+  position: relative;
+  overflow: hidden;
+  background-color: #031b15;
+  color: #e7f7ef;
+}
+
+.login-card {
+  width: 100%;
+  max-width: 480px;
+  box-sizing: border-box;
+  padding: 45px 42px;
+
+  background: #08271e;
+  border: 1px solid #174d3b;
+  border-top: 3px solid #39d99b;
+  border-radius: 22px;
+
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.25);
+}
+
+

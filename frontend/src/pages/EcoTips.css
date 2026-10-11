@@ -1,211 +1,47 @@
-/* Main Layout */
-.eco-layout {
-  display: flex;
-  min-height: 100vh;
-  background: #f7faf7;
-  color: #26382b;
-  font-family: Arial, sans-serif;
-}
+/* ==============================
+   ECO TIPS PAGE
+============================== */
 
-/* Sidebar */
-.eco-sidebar {
-  width: 230px;
-  min-width: 230px;
-  background: #ffffff;
-  border-right: 1px solid #e4ebe4;
-  padding: 28px 16px;
-  display: flex;
-  flex-direction: column;
-}
-
-.eco-brand {
-  display: flex;
-  align-items: center;
-  gap: 12px;
-  padding: 0 10px;
-  margin-bottom: 42px;
-}
-
-.brand-icon {
-  width: 43px;
-  height: 43px;
-  background: #e5f5e7;
-  color: #31833b;
-  border-radius: 12px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 23px;
-}
-
-.eco-brand h2 {
-  font-size: 19px;
-  margin: 0 0 5px;
-  color: #245c2c;
-}
-
-.eco-brand p {
-  margin: 0;
-  color: #89968b;
-  font-size: 12px;
-}
-
-/* Navigation */
-.eco-nav {
-  display: flex;
-  flex-direction: column;
-  gap: 9px;
-}
-
-.eco-nav a {
-  display: flex;
-  align-items: center;
-  gap: 13px;
-  padding: 13px 14px;
-  color: #68766b;
-  text-decoration: none;
-  font-size: 14px;
-  border-radius: 9px;
-  transition: 0.2s;
-}
-
-.eco-nav a svg {
-  font-size: 17px;
-  flex-shrink: 0;
-}
-
-.eco-nav a:hover {
-  background: #f0f7f0;
-  color: #31833b;
-}
-
-.eco-nav a.active {
-  background: #e8f5e9;
-  color: #287632;
-  font-weight: 600;
-  position: relative;
-}
-
-.eco-nav a.active i {
-  width: 4px;
-  height: 25px;
-  background: #31833b;
-  border-radius: 5px;
-  position: absolute;
-  right: 0;
-}
-
-.eco-sidebar-footer {
-  margin-top: auto;
-  padding: 25px 10px 0;
-  color: #9aa59b;
-  font-size: 12px;
-}
-
-/* Main Content */
-.eco-main {
-  flex: 1;
-  min-width: 0;
-}
-
-/* Header */
-.eco-header {
-  min-height: 82px;
-  background: #ffffff;
-  border-bottom: 1px solid #e7ece7;
-  padding: 18px 35px;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 20px;
-}
-
-.eco-header h2 {
-  font-size: 19px;
-  margin: 0 0 6px;
-}
-
-.eco-header p {
-  color: #8a968c;
-  font-size: 12px;
-  margin: 0;
-}
-
-.eco-user {
-  display: flex;
-  align-items: center;
-  gap: 12px;
-}
-
-.eco-bell {
-  font-size: 18px;
-  color: #748174;
-  margin-right: 8px;
-}
-
-.user-avatar {
-  width: 39px;
-  height: 39px;
-  border-radius: 50%;
-  background: #dcefdc;
-  color: #287632;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  font-weight: 700;
-}
-
-.eco-user strong {
-  display: block;
-  font-size: 13px;
-  margin-bottom: 4px;
-}
-
-.eco-user p {
-  margin: 0;
-  font-size: 11px;
-  color: #89968b;
-}
-
-/* Page Content */
 .eco-content {
-  padding: 32px 35px;
-  max-width: 1500px;
-  margin: 0 auto;
+  width: 100%;
+  padding: 28px 0;
 }
 
 .eco-title-row {
   display: flex;
-  align-items: center;
   justify-content: space-between;
-  gap: 25px;
-  margin-bottom: 25px;
+  align-items: center;
+  gap: 24px;
+  margin-bottom: 24px;
 }
 
-.eco-title-row h1 {
-  margin: 0 0 10px;
-  font-size: 29px;
-  color: #243b29;
+.eco-title-row h2 {
+  margin: 0 0 8px;
+  font-size: 26px;
+  color: #183b2a;
 }
 
 .eco-title-row p {
   margin: 0;
-  color: #7e8b80;
+  color: #718078;
   font-size: 14px;
   line-height: 1.6;
 }
 
-/* Progress Circle */
+/* ==============================
+   PROGRESS CIRCLE
+============================== */
+
 .eco-progress-circle {
   display: flex;
   align-items: center;
-  gap: 13px;
+  gap: 14px;
   flex-shrink: 0;
 }
 
-.circle {
-  width: 66px;
-  height: 66px;
+.eco-progress-circle .circle {
+  width: 76px;
+  height: 76px;
   border-radius: 50%;
   display: flex;
   align-items: center;
@@ -213,73 +49,76 @@
   position: relative;
 }
 
-.circle::before {
+.eco-progress-circle .circle::before {
   content: "";
   position: absolute;
-  width: 51px;
-  height: 51px;
-  border-radius: 50%;
+  inset: 7px;
   background: #ffffff;
+  border-radius: 50%;
 }
 
-.circle span {
+.eco-progress-circle .circle span {
   position: relative;
   z-index: 1;
-  color: #287632;
-  font-size: 15px;
+  color: #246b36;
+  font-size: 18px;
   font-weight: 700;
 }
 
 .eco-progress-circle strong {
-  font-size: 13px;
+  display: block;
+  color: #244331;
+  font-size: 14px;
 }
 
 .eco-progress-circle p {
   margin-top: 5px;
-  font-size: 12px;
+  font-size: 13px;
 }
 
-/* Overall Progress Card */
+/* ==============================
+   OVERALL PROGRESS CARD
+============================== */
+
 .eco-progress-card {
   background: #ffffff;
-  border: 1px solid #e6ede6;
-  border-radius: 12px;
-  padding: 21px 23px;
-  margin-bottom: 25px;
-  box-shadow: 0 2px 8px rgba(25, 60, 30, 0.03);
+  border: 1px solid #e3ece5;
+  border-radius: 16px;
+  padding: 22px;
+  margin-bottom: 26px;
+  box-shadow: 0 4px 16px rgba(30, 70, 42, 0.04);
 }
 
 .progress-heading {
   display: flex;
   justify-content: space-between;
   align-items: center;
+  flex-wrap: wrap;
   gap: 12px;
-  margin-bottom: 15px;
-  font-size: 13px;
-}
-
-.progress-heading strong:last-child {
-  color: #7d8b7f;
-  font-size: 12px;
-  font-weight: 500;
+  margin-bottom: 14px;
+  color: #294a35;
+  font-size: 14px;
 }
 
 .progress-track {
   width: 100%;
-  height: 8px;
-  background: #e8f0e8;
+  height: 10px;
+  background: #e8f1e9;
   border-radius: 20px;
   overflow: hidden;
 }
 
 .progress-fill {
   height: 100%;
-  background: #31833b;
+  background: linear-gradient(90deg, #31833b, #69b96e);
   border-radius: 20px;
-  transition: width 0.3s ease;
+  transition: width 0.35s ease;
 }
 
-/* Tips Grid */
+/* ==============================
+   TIPS GRID
+============================== */
+
 .eco-tips-grid {
   display: grid;
   grid-template-columns: repeat(3, minmax(0, 1fr));
@@ -287,153 +126,133 @@
 }
 
 .eco-tip-card {
-  background: #ffffff;
-  border: 1px solid #e4ebe4;
-  border-top: 4px solid #31833b;
-  border-radius: 13px;
-  padding: 22px;
-  min-width: 0;
   position: relative;
   display: flex;
   flex-direction: column;
-  transition: transform 0.2s, box-shadow 0.2s;
+  min-width: 0;
+  min-height: 280px;
+  padding: 22px;
+  background: #ffffff;
+  border: 1px solid #e4ebe5;
+  border-radius: 18px;
+  box-shadow: 0 5px 18px rgba(25, 65, 38, 0.045);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
 }
 
 .eco-tip-card:hover {
-  transform: translateY(-3px);
-  box-shadow: 0 7px 20px rgba(30, 70, 35, 0.08);
+  transform: translateY(-4px);
+  box-shadow: 0 10px 24px rgba(25, 65, 38, 0.09);
 }
 
-.eco-tip-card.orange {
-  border-top-color: #e69a38;
+.eco-tip-card.completed {
+  border-color: #a9d8af;
+  background: #fbfffb;
 }
 
-.eco-tip-card.blue {
-  border-top-color: #4397d0;
-}
-
-.eco-tip-card.green {
-  border-top-color: #31833b;
-}
-
-.eco-tip-card.purple {
-  border-top-color: #9670c9;
-}
-
-.eco-tip-card.teal {
-  border-top-color: #2eaaa0;
-}
-
-/* Tip Icons */
 .tip-icon {
-  width: 47px;
-  height: 47px;
-  border-radius: 12px;
-  background: #e9f5e9;
-  color: #31833b;
+  width: 48px;
+  height: 48px;
   display: flex;
-  align-items: center;
   justify-content: center;
-  font-size: 22px;
+  align-items: center;
+  border-radius: 14px;
   margin-bottom: 17px;
+  font-size: 21px;
 }
 
-.orange .tip-icon {
-  background: #fff2df;
-  color: #d88721;
+.eco-tip-card.orange .tip-icon {
+  color: #c76c19;
+  background: #fff0df;
 }
 
-.blue .tip-icon {
-  background: #e7f3fc;
-  color: #3189c4;
+.eco-tip-card.blue .tip-icon {
+  color: #2476b8;
+  background: #e6f3ff;
 }
 
-.green .tip-icon {
-  background: #e5f5e7;
-  color: #31833b;
+.eco-tip-card.green .tip-icon {
+  color: #2f843d;
+  background: #e5f6e8;
 }
 
-.purple .tip-icon {
-  background: #f0eafa;
-  color: #8961bd;
+.eco-tip-card.purple .tip-icon {
+  color: #8050b4;
+  background: #f2e9ff;
 }
 
-.teal .tip-icon {
-  background: #e1f6f3;
-  color: #259b91;
+.eco-tip-card.teal .tip-icon {
+  color: #168b82;
+  background: #e0f7f3;
 }
 
-/* Tip Text */
 .tip-category {
-  color: #718174;
-  font-size: 11px;
-  font-weight: 600;
+  display: inline-block;
+  align-self: flex-start;
   margin-bottom: 10px;
+  color: #477451;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.6px;
   text-transform: uppercase;
-  letter-spacing: 0.4px;
 }
 
 .eco-tip-card h3 {
-  color: #293c2d;
-  font-size: 17px;
+  margin: 0 0 10px;
+  color: #203d2a;
+  font-size: 18px;
   line-height: 1.4;
-  margin: 0 0 11px;
 }
 
 .tip-description {
-  color: #78857a;
+  margin: 0 0 22px;
+  color: #6d7d72;
   font-size: 13px;
   line-height: 1.7;
-  margin: 0 0 22px;
-  flex: 1;
 }
 
-/* Card Footer */
+.done-check {
+  position: absolute;
+  top: 18px;
+  right: 18px;
+  color: #31833b;
+  font-size: 19px;
+}
+
+/* ==============================
+   TIP FOOTER AND BUTTON
+============================== */
+
 .tip-footer {
   display: flex;
-  align-items: center;
   justify-content: space-between;
+  align-items: center;
   flex-wrap: wrap;
   gap: 12px;
-  border-top: 1px solid #edf1ed;
-  padding-top: 17px;
   margin-top: auto;
+  padding-top: 16px;
+  border-top: 1px solid #edf1ed;
 }
 
 .tip-impact {
-  font-size: 11px;
+  color: #52745a;
+  font-size: 12px;
   font-weight: 600;
-  color: #31833b;
-  background: #eaf5eb;
-  border-radius: 20px;
-  padding: 7px 10px;
 }
 
-.orange .tip-impact {
-  color: #b8751e;
-  background: #fff2df;
-}
-
-.blue .tip-impact {
-  color: #287eaf;
-  background: #e7f3fc;
-}
-
-/* Buttons */
 .tip-footer button {
   display: inline-flex;
   align-items: center;
   justify-content: center;
   gap: 6px;
+  padding: 9px 13px;
   border: 1px solid #31833b;
+  border-radius: 9px;
   background: #ffffff;
   color: #31833b;
-  border-radius: 8px;
-  padding: 9px 12px;
   font-size: 12px;
   font-weight: 600;
   cursor: pointer;
-  transition: 0.2s;
+  transition: background 0.2s ease, color 0.2s ease;
 }
 
 .tip-footer button:hover {
@@ -441,81 +260,25 @@
   color: #ffffff;
 }
 
-.eco-tip-card.completed {
-  background: #fcfffc;
-}
-
 .eco-tip-card.completed .tip-footer button {
-  background: #31833b;
-  color: #ffffff;
+  background: #e7f5e8;
+  color: #287237;
+  border-color: #c5e5c9;
 }
 
-.done-check {
-  position: absolute;
-  top: 17px;
-  right: 17px;
-  color: #31833b;
-  font-size: 20px;
-}
+/* ==============================
+   RESPONSIVE DESIGN
+============================== */
 
-/* Responsive Design */
 @media (max-width: 1100px) {
   .eco-tips-grid {
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
-
-  .eco-content {
-    padding: 25px;
-  }
-
-  .eco-header {
-    padding: 18px 25px;
-  }
 }
 
 @media (max-width: 700px) {
-  .eco-layout {
-    flex-direction: column;
-  }
-
-  .eco-sidebar {
-    width: 100%;
-    min-width: 0;
-    padding: 15px;
-    border-right: none;
-    border-bottom: 1px solid #e4ebe4;
-  }
-
-  .eco-brand {
-    margin-bottom: 15px;
-  }
-
-  .eco-nav {
-    flex-direction: row;
-    flex-wrap: wrap;
-    gap: 5px;
-  }
-
-  .eco-nav a {
-    padding: 10px;
-    gap: 7px;
-    font-size: 12px;
-  }
-
-  .eco-nav a svg {
-    font-size: 15px;
-  }
-
-  .eco-sidebar-footer {
-    display: none;
-  }
-
-  .eco-header {
-    padding: 16px;
-  }
-
   .eco-content {
-    padding: 20px 15px;
+    padding-top: 18px;
   }
 
   .eco-title-row {
@@ -523,12 +286,8 @@
     flex-direction: column;
   }
 
-  .eco-title-row h1 {
-    font-size: 25px;
-  }
-
-  .eco-tips-grid {
-    grid-template-columns: 1fr;
+  .eco-progress-card {
+    padding: 17px;
   }
 
   .progress-heading {
@@ -536,26 +295,22 @@
     flex-direction: column;
   }
 
+  .eco-tips-grid {
+    grid-template-columns: 1fr;
+  }
+
   .eco-tip-card {
-    padding: 19px;
+    min-height: 250px;
   }
 }
 
-@media (max-width: 400px) {
-  .eco-user {
-    gap: 7px;
+@media (max-width: 420px) {
+  .eco-title-row h2 {
+    font-size: 22px;
   }
 
-  .eco-bell {
-    display: none;
-  }
-
-  .eco-user strong {
-    font-size: 12px;
-  }
-
-  .eco-user p {
-    font-size: 10px;
+  .eco-tip-card {
+    padding: 17px;
   }
 
   .tip-footer {
