@@ -1,0 +1,19 @@
+# Dependencies and build output
+node_modules/
+frontend/dist/
+backend/dist/
+
+# Environment variables and local secrets
+.env
+.env.*
+!.env.example
+frontend/.env
+backend/.env
+backend/serviceAccountKey.json
+
+# Logs
+npm-debug.log*
+*.log
+
+# Local documentation backups
+*.backup

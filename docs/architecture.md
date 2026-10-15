@@ -1,74 +1,75 @@
-# System Architecture
+# EcoAI System Architecture
 
-## Overview
+## 1. Overview
 
-The application uses a frontend-backend architecture.
+EcoAI is an AI Sustainability Tracker designed to help individuals and organisations understand their resource usage and make more environmentally conscious decisions.
 
-## Technology Layers
+The project uses a frontend, a backend API, and Firebase Firestore for storing usage records.
 
-### 1. Frontend
+## 2. Technology Stack
 
-React + Vite
+### Frontend
+- React
+- Vite
+- JavaScript
+- React Router
+- Charting libraries used by the interface
+- Lucide React and React Icons
 
-The frontend provides:
+### Backend
+- Node.js
+- Express.js
+- CORS
+- dotenv
+- Firebase Admin SDK
 
-- Dashboard
-- Usage tracking forms
-- Sustainability score
-- Reports
-- AI suggestions
-- Prompt Optimizer
-- Feedback interface
+### Database
+- Firebase Firestore
+- Usage records are stored in the `usageRecords` collection.
 
-### 2. Backend
+## 3. Architecture Flow
 
-Node.js + Express.js
+1. The user interacts with the EcoAI frontend.
+2. The frontend can send HTTP requests to the backend API.
+3. The Express server validates submitted usage values.
+4. Valid usage records are saved to Firestore.
+5. The backend returns a response to the frontend.
 
-The backend handles:
+The frontend API base URL can be configured using `VITE_API_BASE_URL`. The default backend URL is `http://localhost:5000`.
 
-- API requests
-- User usage data
-- Environmental impact calculations
-- Communication with AI services
+## 4. Verified Backend Endpoints
 
-### 3. AI Layer
+| Method | Endpoint | Purpose |
+| --- | --- | --- |
+| GET | `/` | Confirms that the backend is running |
+| GET | `/api/health` | Returns the backend health status |
+| GET | `/api/usage` | Retrieves usage records |
+| POST | `/api/usage` | Validates and saves a usage record |
 
-The AI layer provides:
+The usage submission accepts non-negative numeric values for electricity, water, e-waste, and AI usage. The exact units should be confirmed in the frontend before interpreting the values.
 
-- Personalized sustainability suggestions
-- Prompt optimization
-- AI-based recommendations
+## 5. Data Storage
 
-## Data Flow
+Usage records are stored in the Firestore `usageRecords` collection. Each record contains the submitted usage values and a creation timestamp.
 
-User
-↓
-React Frontend
-↓
-Express REST API
-↓
-Calculation / AI Services
-↓
-Response
-↓
-React Dashboard
+Firebase credentials are loaded from a local service account file. This file must remain private and must not be committed to Git or included in public submissions.
 
-## API Endpoints
+## 6. Configuration
 
-POST /api/usage
+The backend uses port `5000` by default and can use the `PORT` environment variable.
 
-GET /api/dashboard
+The frontend can use this environment variable:
 
-GET /api/report
+`VITE_API_BASE_URL=http://localhost:5000`
 
-POST /api/suggestions
+Use local environment files for configuration. Never publish API secrets, private keys, or Firebase service account credentials.
 
-POST /api/optimize-prompt
+## 7. Current Scope and Limitations
 
-POST /api/feedback
+This document describes the verified backend routes and storage design. Other frontend features, calculations, charts, recommendations, reports, and prompt-optimisation functions should be described as implemented only after their behaviour has been tested.
 
-## Current Health Check
+Environmental impact values should be presented as estimates when they are calculated from usage inputs and assumptions. They should not be represented as exact measurements without supporting data.
 
-GET /api/health
+## 8. Future Improvements
 
-This endpoint is used to verify that the backend is running correctly.
+Possible improvements include authentication, stronger validation, automated testing, more detailed reporting, configurable emission factors, and integrations with verified environmental datasets.

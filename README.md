@@ -1,48 +1,46 @@
-# EcoAI – AI Sustainability Tracker
+# EcoAI — AI Sustainability Tracker
 
-## About the Project
+EcoAI is a web-based sustainability project developed by the EcoAI Innovators team at Navgurukul for the FES Code4Nature Challenge 2026.
 
-EcoAI is a web application developed by our team for the Code4Nature Challenge 2026 at Navgurukul.
+The project aims to make the environmental impact of everyday digital activities easier to understand. It brings together sustainability tracking, AI usage awareness, and practical ideas for more responsible digital habits.
 
-We use digital devices and AI tools in our daily lives, but we do not always think about their environmental impact. Our project aims to help users understand this impact through information about electricity usage, water usage, electronic waste, and AI usage.
+## The Problem
 
-The goal is to make environmental information easier to understand and encourage more responsible use of digital technology.
+People use electricity, water, electronic devices, and AI tools every day. However, it can be difficult to understand how these activities relate to environmental sustainability.
 
-## Problem Statement
+EcoAI aims to make this information more accessible and encourage people to make informed, sustainable choices.
 
-The use of digital devices and AI tools is increasing. However, it can be difficult for individuals to understand the resources associated with their digital activities.
+## Our Approach
 
-EcoAI aims to make sustainability information more accessible and help users become more aware of their digital habits.
+EcoAI focuses on connecting usage information with understandable sustainability insights.
 
-## Features
+The project explores:
+- Tracking electricity, water, electronic waste, and AI usage.
+- Presenting sustainability information through a dashboard.
+- Helping users understand usage patterns.
+- Encouraging practical sustainability improvements.
+- Exploring more efficient AI usage and prompt optimization.
 
-The project focuses on the following areas:
-
-- **Sustainability dashboard:** Displays a summary of sustainability-related information.
-- **Electricity usage:** Tracks electricity-related values.
-- **Water usage:** Tracks water-related values.
-- **E-waste:** Records information about electronic waste.
-- **AI usage:** Tracks AI usage using prompt counts.
-- **Dashboard summary:** Calculates totals from the usage records received by the backend.
-
-The backend currently provides API routes for recording usage and retrieving a dashboard summary. The availability of these features in the user interface depends on the current frontend implementation.
+The availability of individual features depends on the current application implementation. Estimated or simulated values should not be interpreted as verified environmental measurements.
 
 ## Technology Stack
 
-**Frontend**
+### Frontend
 - React
 - JavaScript
 - Vite
 - React Router
-- Recharts and Chart.js for charts
+- Recharts and Chart.js
 - Lucide React and React Icons
 
-**Backend**
+### Backend
 - Node.js
 - Express.js
-- CORS
+- Firebase Admin SDK
+- Cloud Firestore
+- dotenv and CORS
 
-**Development tools**
+### Development
 - Git and GitHub
 - npm
 - ESLint
@@ -54,7 +52,14 @@ code-for-nature/
 ├── backend/
 │   ├── server.js
 │   ├── package.json
-│   └── package-lock.json
+│   ├── package-lock.json
+│   └── .gitignore
+├── frontend/
+│   ├── public/
+│   ├── src/
+│   ├── package.json
+│   ├── package-lock.json
+│   └── vite.config.js
 ├── docs/
 │   ├── API-CONTRACT.md
 │   ├── architecture.md
@@ -63,25 +68,21 @@ code-for-nature/
 │   ├── impact.md
 │   ├── problem-statement.md
 │   └── solution.md
-├── frontend/
-│   ├── public/
-│   ├── src/
-│   ├── index.html
-│   ├── package.json
-│   └── vite.config.js
 ├── MVP.md
+├── .gitignore
 └── README.md
 ```
 
 ## Requirements
 
-Before running the project, install:
+Install the following before starting:
 
 - Node.js and npm
 - Git
-- A web browser
+- A modern web browser
+- A Firebase project with Cloud Firestore enabled
 
-Check whether they are installed:
+Check your installation:
 
 ```bash
 node -v
@@ -89,7 +90,7 @@ npm -v
 git --version
 ```
 
-## Installation
+## Setup
 
 ### 1. Clone the repository
 
@@ -97,6 +98,8 @@ git --version
 git clone https://github.com/nargis25-ui/code-for-nature.git
 cd code-for-nature
 ```
+
+If you already have the repository, open its directory instead.
 
 ### 2. Install frontend dependencies
 
@@ -107,160 +110,151 @@ npm install
 
 ### 3. Install backend dependencies
 
-Open another terminal and run:
+Open a second terminal in the repository and run:
 
 ```bash
 cd ~/Desktop/code-for-nature/backend
 npm install
 ```
 
-If you cloned the project into a different location, use that location instead.
+If your repository is in another location, replace the path accordingly.
 
-## Running the Project
+### 4. Configure Firebase credentials
 
-The frontend and backend run separately, so start them in two terminals.
+The backend loads Firebase Admin credentials from:
+
+```text
+backend/serviceAccountKey.json
+```
+
+To configure Firebase:
+
+1. Open the Firebase Console and select your project.
+2. Enable Cloud Firestore.
+3. Obtain a service-account credential using an appropriate, secure Firebase administrative setup.
+4. Place the downloaded credential file at `backend/serviceAccountKey.json`.
+5. Keep the credential file private and excluded from Git.
+
+Never commit service-account keys or share their contents publicly. Do not replace the real credential with placeholder values and expect Firebase operations to work.
+
+The backend uses `process.env.PORT` when configured and otherwise defaults to port `5000`.
+
+### 5. Configure the frontend API URL
+
+The frontend can use the following environment variable:
+
+```text
+VITE_API_BASE_URL=http://localhost:5000
+```
+
+Create `frontend/.env` locally if your frontend requires this setting. The frontend code should not contain Firebase Admin credentials or other server secrets.
+
+Keep local environment files out of version control.
+
+## Run the Application
+
+Run the frontend and backend in separate terminals.
 
 ### Start the backend
-
-In the first terminal:
 
 ```bash
 cd ~/Desktop/code-for-nature/backend
 npm run dev
 ```
 
-The backend runs on port 5000 by default.
+The backend defaults to:
 
-To check whether it is running, open:
+```text
+http://localhost:5000
+```
 
+Check its health endpoint:
+
+```text
 http://localhost:5000/api/health
+```
 
-A successful response should contain a status of `OK`.
+A healthy response looks like:
+
+```json
+{
+  "status": "OK",
+  "message": "Backend is healthy"
+}
+```
 
 ### Start the frontend
 
-In the second terminal:
+In another terminal:
 
 ```bash
 cd ~/Desktop/code-for-nature/frontend
 npm run dev
 ```
 
-Open the local URL displayed by Vite. The default is:
+Open the local URL displayed by Vite. It commonly starts at `http://localhost:5173`, but Vite may choose another port if that port is already in use.
 
-http://localhost:5173
+### Validate the frontend
 
-### Build the frontend
-
-To create a production build, run:
-
-```bash
-cd ~/Desktop/code-for-nature/frontend
-npm run build
-```
-
-### Check the frontend code
-
-To run ESLint, use:
+From the frontend directory:
 
 ```bash
 npm run lint
+npm run build
 ```
+
+The lint command checks the code with ESLint. The build command creates the production frontend bundle.
 
 ## Backend API
 
-The backend uses Express.js to handle API requests.
+Base URL: `http://localhost:5000`
 
-| Method | Endpoint | Description |
-|---|---|---|
-| GET | `/` | Checks the API's root route |
-| GET | `/api/health` | Checks backend health |
-| POST | `/api/usage` | Adds a usage record |
-| GET | `/api/dashboard` | Returns totals for recorded usage |
+| Method | Endpoint | Purpose |
+| --- | --- | --- |
+| GET | `/` | Backend status message |
+| GET | `/api/health` | Health check |
+| GET | `/api/usage` | Retrieve usage records from Firestore |
+| POST | `/api/usage` | Validate and save a usage record |
 
-### Recording usage
+The usage API accepts these numeric fields:
 
-Send a POST request to `/api/usage` with a JSON body containing four non-negative numbers:
+- `electricity`
+- `water`
+- `ewaste`
+- `aiUsage`
 
-```json
-{
-  "electricity": 2.5,
-  "water": 10,
-  "ewaste": 0.2,
-  "aiUsage": 15
-}
-```
+Each value must be a finite, non-negative number. Successful creation returns HTTP `201`; invalid input returns HTTP `400`.
 
-The backend checks that all four values are numbers and are not negative. It then creates a record with an ID and timestamp.
+Records are stored in the Firestore `usageRecords` collection and include a creation timestamp.
 
-### Dashboard summary
+See [API Contract](docs/API-CONTRACT.md) for request and response examples.
 
-A GET request to `/api/dashboard` returns the number of records, their totals, and the units used by the API.
+## Environmental Impact and Limitations
 
-The current units are:
+Usage records and their totals do not automatically establish verified environmental impact.
 
-- Electricity: kWh
-- Water: liters
-- E-waste: kg
-- AI usage: prompts
+Reliable environmental estimates depend on appropriate calculation methods, documented assumptions, accurate input data, and relevant data sources. AI-related energy and water use can vary with the model, hardware, workload, data-centre location, and electricity supply.
 
-### Data storage
+EcoAI should distinguish measured, estimated, and simulated values wherever applicable. Do not claim verified carbon reductions or energy savings without supporting measurements and a defensible comparison.
 
-Usage records are currently stored in an in-memory array in the backend. They are not saved to a database, so the records are cleared when the backend restarts.
+## Documentation
 
-## Environmental Impact Estimates
-
-The project focuses on making digital sustainability information easier to understand.
-
-The values entered into the backend are used to calculate totals. These totals should not automatically be treated as verified environmental impact measurements. Reliable environmental estimates require appropriate calculation methods, input data, and documented assumptions.
-
-The methods and assumptions used by the project should be explained in the impact documentation.
-
-## Project Documentation
-
-Additional information about the project is available in the `docs/` folder:
-
-- `problem-statement.md` – the problem the project addresses.
-- `solution.md` – the proposed solution.
-- `architecture.md` – the project architecture.
-- `API-CONTRACT.md` – API details.
-- `impact.md` – environmental impact information.
-- `future-scope.md` – possible future improvements.
-- `demo-script.md` – demonstration notes.
-
-`MVP.md` contains information about the minimum viable product.
-
-## Future Improvements
-
-Possible improvements include:
-
-- Saving usage records in a database.
-- Improving environmental impact calculations.
-- Adding more detailed reports and visualizations.
-- Providing useful suggestions for reducing digital impact.
-- Improving the tracking of AI usage.
-- Making the application useful for more users and organizations.
-
-These are possible improvements and are not necessarily available in the current version.
+- [Minimum Viable Product](MVP.md)
+- [Problem Statement](docs/problem-statement.md)
+- [Solution Overview](docs/solution.md)
+- [System Architecture](docs/architecture.md)
+- [API Contract](docs/API-CONTRACT.md)
+- [Expected Impact and Limitations](docs/impact.md)
+- [Future Scope](docs/future-scope.md)
+- [Demo Script](docs/demo-script.md)
 
 ## Team
 
-**Team Name:** EcoAI Innovators
-
+**Team:** EcoAI Innovators
 **Institution:** Navgurukul
+**Challenge:** FES Code4Nature Challenge 2026
+**Theme:** Climate Change and Environmental Sustainability
 
-**Challenge:** Code4Nature Challenge 2026
+## Our Goal
 
-**Team Members:**
-- Nargis – Team Lead
-- Payal
-- Sakshi Suman
-- Anamika
-
-## License and Attribution
-
-The Code4Nature Challenge 2026 guidelines specify CC BY or CC BY-NC licensing for submissions.
-
-The project team needs to select the appropriate license and include the relevant license file and attribution information. External code, datasets, images, and other resources must be credited according to their applicable license terms.
-
-The backend's `package.json` currently contains an ISC license declaration. This does not, by itself, establish the required license for the entire Code4Nature submission. The project licensing should be reviewed and aligned with the challenge requirements before final submission.
+We want to make digital sustainability easier to understand and act on—helping people develop more informed habits as the use of digital technologies and AI continues to grow.

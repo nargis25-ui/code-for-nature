@@ -1,42 +1,52 @@
-# Demo Script
+# EcoAI Demo Script
 
-## 1. Introduce the Problem
+**Suggested duration:** 3–5 minutes
 
-People use electricity, water, electronic devices, and AI every day, but they often do not know the environmental impact of these activities.
+## 1. Introduction
 
-## 2. Introduce Our Solution
+Hello everyone. We are EcoAI Innovators from Navgurukul, participating in the FES Code4Nature Challenge 2026.
 
-AI Sustainability Tracker helps users track these activities and understand their sustainability impact.
+Our project is EcoAI — AI Sustainability Tracker. It focuses on environmental sustainability and helps users understand resource usage and explore more responsible choices.
 
-## 3. Dashboard
+## 2. The Problem
 
-Show the user's sustainability score and environmental impact summary.
+People and organisations may find it difficult to keep track of resource usage and understand how everyday digital and physical activities relate to sustainability.
 
-## 4. Track Usage
+Without clear records and understandable information, it can be difficult to identify where improvements may be useful.
 
-Enter sample values for:
+## 3. Our Approach
 
-- Electricity
-- Water
-- E-waste
-- AI usage
+EcoAI provides an interface for sustainability-related usage information. Its backend supports submitting usage records and storing them in Firebase Firestore.
 
-## 5. Show Impact
+The project is intended to make resource information easier to review and provide a foundation for future sustainability insights.
 
-Show the calculated environmental impact and sustainability score.
+## 4. Live Demonstration
 
-## 6. Show Recommendations
+During the demonstration:
 
-Demonstrate personalized recommendations generated from the user's data.
+1. Open the EcoAI website.
+2. Show the main dashboard and explain the information that is actually visible.
+3. Navigate through the working sections of the interface.
+4. If the usage form is available, enter sample non-negative values and submit them.
+5. If the backend is running, demonstrate that the usage record is saved successfully.
+6. Explain any charts, scores, or recommendations only after verifying how they are calculated.
 
-## 7. Prompt Optimizer
+Use clearly labelled sample data. Do not present sample values as real measurements.
 
-Enter an inefficient AI prompt and demonstrate how the system improves it.
+## 5. Technical Overview
 
-## 8. Show Progress
+The frontend is built with React and Vite. The backend uses Node.js and Express, and usage records are stored in Firebase Firestore.
 
-Demonstrate the user's weekly or monthly sustainability progress.
+The verified backend API includes a health-check route, a route for retrieving usage records, and a route for submitting usage records.
 
-## 9. Closing
+## 6. Limitations and Next Steps
 
-Our goal is to make sustainability measurable, understandable, and actionable for everyday users.
+Environmental estimates depend on the quality of the input data, units, and calculation assumptions. Additional testing and validation are needed before making claims about actual environmental savings.
+
+Possible next steps include stronger reporting, more transparent environmental calculations, and further sustainability assistance.
+
+## 7. Closing
+
+EcoAI aims to make sustainability information more understandable and actionable. We hope this prototype can provide a foundation for better resource awareness and more informed environmental decisions.
+
+Thank you.
