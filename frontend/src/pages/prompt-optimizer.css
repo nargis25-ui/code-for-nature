@@ -1,0 +1,393 @@
+.optimizer-page {
+  width: 100%;
+  min-width: 0;
+  color: #26392d;
+}
+
+.optimizer-intro {
+  margin-bottom: 23px;
+}
+
+.optimizer-eyebrow {
+  color: #438c5e;
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 1.4px;
+}
+
+.optimizer-intro h2 {
+  margin: 9px 0;
+  font-size: 25px;
+  letter-spacing: -0.6px;
+}
+
+.optimizer-intro > p,
+.optimizer-hero p,
+.optimizer-card-heading p {
+  margin: 0;
+  color: #78867c;
+  font-size: 13px;
+  line-height: 1.7;
+}
+
+.optimizer-hero {
+  display: flex;
+  align-items: flex-start;
+  gap: 15px;
+  margin-bottom: 22px;
+  padding: 21px 23px;
+  border: 1px solid #dcebdd;
+  border-radius: 15px;
+  background: #f1f8f0;
+}
+
+.optimizer-hero-icon,
+.optimizer-heading-icon {
+  display: grid;
+  flex-shrink: 0;
+  place-items: center;
+  border-radius: 11px;
+  background: #e0f0e2;
+  color: #216b48;
+}
+
+.optimizer-hero-icon {
+  width: 46px;
+  height: 46px;
+}
+
+.optimizer-hero h3 {
+  margin: 1px 0 7px;
+  color: #26392d;
+  font-size: 16px;
+}
+
+.optimizer-layout {
+  display: grid;
+  grid-template-columns: minmax(0, 1.55fr) minmax(240px, 0.9fr);
+  align-items: start;
+  gap: 20px;
+}
+
+.optimizer-card,
+.optimizer-result-card {
+  min-width: 0;
+  padding: 23px;
+  border: 1px solid #e6ede5;
+  border-radius: 15px;
+  background: #fff;
+}
+
+.optimizer-card-heading {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  margin-bottom: 22px;
+}
+
+.optimizer-heading-icon {
+  width: 40px;
+  height: 40px;
+}
+
+.optimizer-card-heading h3 {
+  margin: 1px 0 5px;
+  color: #26392d;
+  font-size: 15px;
+}
+
+.optimizer-field {
+  display: flex;
+  min-width: 0;
+  flex-direction: column;
+  gap: 8px;
+  margin-bottom: 17px;
+  color: #425448;
+  font-size: 12px;
+  font-weight: 650;
+}
+
+.optimizer-field > span {
+  display: inline;
+  color: #bd4438;
+}
+
+.optimizer-field small {
+  color: #829085;
+  font-size: 11px;
+  font-weight: 400;
+}
+
+.optimizer-field textarea,
+.optimizer-field select {
+  box-sizing: border-box;
+  width: 100%;
+  min-width: 0;
+  border: 1px solid #dfe8df;
+  border-radius: 9px;
+  outline: none;
+  background: #fff;
+  color: #26392d;
+  font: inherit;
+  font-size: 13px;
+  font-weight: 400;
+}
+
+.optimizer-field textarea {
+  min-height: 80px;
+  padding: 12px;
+  resize: vertical;
+  line-height: 1.7;
+}
+
+.optimizer-field select {
+  min-height: 43px;
+  padding: 10px;
+}
+
+.optimizer-field textarea::placeholder {
+  color: #9aa69d;
+}
+
+.optimizer-field textarea:focus,
+.optimizer-field select:focus {
+  border-color: #438c5e;
+  box-shadow: 0 0 0 3px rgb(67 140 94 / 11%);
+}
+
+.optimizer-word-count {
+  margin: -10px 0 17px;
+  color: #849087;
+  font-size: 10px;
+  text-align: right;
+}
+
+.optimizer-options {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 13px;
+}
+
+.optimizer-actions {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 9px;
+  margin-top: 5px;
+}
+
+.optimizer-primary-button,
+.optimizer-secondary-button,
+.optimizer-reset-button {
+  display: inline-flex;
+  min-height: 40px;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 10px 13px;
+  border: 0;
+  border-radius: 9px;
+  cursor: pointer;
+  font: inherit;
+  font-size: 12px;
+  font-weight: 700;
+  transition: background 0.2s ease;
+}
+
+.optimizer-primary-button {
+  background: #216b48;
+  color: #fff;
+}
+
+.optimizer-primary-button:hover {
+  background: #185638;
+}
+
+.optimizer-secondary-button {
+  background: #eaf4ec;
+  color: #216b48;
+}
+
+.optimizer-secondary-button:hover {
+  background: #dcecdf;
+}
+
+.optimizer-reset-button {
+  background: #f3f5f2;
+  color: #647568;
+}
+
+.optimizer-reset-button:hover {
+  background: #e7ebe5;
+}
+
+.optimizer-side-column {
+  display: grid;
+  gap: 18px;
+}
+
+.optimizer-tips-card .optimizer-card-heading {
+  margin-bottom: 15px;
+}
+
+.optimizer-tip-list {
+  display: grid;
+  gap: 13px;
+  margin: 0;
+  padding-left: 19px;
+  color: #59695d;
+  font-size: 12px;
+  line-height: 1.7;
+}
+
+.optimizer-tip-list li::marker {
+  color: #438c5e;
+}
+
+.optimizer-efficiency-card {
+  padding: 21px;
+  border: 1px solid #e5ede4;
+  border-radius: 15px;
+  background: #f8faf6;
+}
+
+.optimizer-efficiency-icon {
+  display: grid;
+  width: 40px;
+  height: 40px;
+  place-items: center;
+  border-radius: 11px;
+  background: #fff1d5;
+  color: #a87714;
+}
+
+.optimizer-efficiency-card h3 {
+  margin: 14px 0 7px;
+  color: #26392d;
+  font-size: 15px;
+}
+
+.optimizer-efficiency-card > p {
+  margin: 0;
+  color: #78867c;
+  font-size: 12px;
+  line-height: 1.8;
+}
+
+.optimizer-efficiency-note {
+  display: grid;
+  gap: 6px;
+  margin-top: 16px;
+  padding-top: 14px;
+  border-top: 1px solid #e3eae1;
+}
+
+.optimizer-efficiency-note strong {
+  color: #3b6547;
+  font-size: 11px;
+}
+
+.optimizer-efficiency-note span {
+  color: #78867c;
+  font-size: 11px;
+  line-height: 1.7;
+}
+
+.optimizer-message {
+  display: flex;
+  align-items: flex-start;
+  gap: 8px;
+  margin: 15px 0 0;
+  padding: 11px 12px;
+  border-radius: 9px;
+  font-size: 12px;
+  line-height: 1.6;
+}
+
+.optimizer-error {
+  background: #fff0ee;
+  color: #a53a2d;
+}
+
+.optimizer-success {
+  background: #eaf5ec;
+  color: #216b48;
+}
+
+.optimizer-result-card {
+  margin-top: 22px;
+}
+
+.optimizer-result-header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 15px;
+}
+
+.optimizer-result-header .optimizer-card-heading {
+  margin-bottom: 16px;
+}
+
+.optimizer-copy-button {
+  flex-shrink: 0;
+}
+
+.optimizer-result-text {
+  overflow-x: auto;
+  margin: 0;
+  padding: 18px;
+  border: 1px solid #e6ede5;
+  border-radius: 11px;
+  background: #f8faf7;
+  color: #34473a;
+  font-family: inherit;
+  font-size: 12px;
+  line-height: 1.85;
+  white-space: pre-wrap;
+  overflow-wrap: anywhere;
+}
+
+@media (max-width: 900px) {
+  .optimizer-layout {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .optimizer-side-column {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    align-items: stretch;
+  }
+}
+
+@media (max-width: 560px) {
+  .optimizer-card,
+  .optimizer-result-card {
+    padding: 16px;
+  }
+
+  .optimizer-hero {
+    padding: 16px;
+  }
+
+  .optimizer-side-column {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .optimizer-options {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 0;
+  }
+
+  .optimizer-result-header {
+    flex-direction: column;
+  }
+
+  .optimizer-intro h2 {
+    font-size: 22px;
+  }
+
+  .optimizer-actions > button {
+    flex: 1 1 auto;
+  }
+}
+

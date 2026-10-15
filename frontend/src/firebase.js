@@ -21,3 +21,4 @@ export const auth = getAuth(app);
 
 // Export Google login provider
 export const googleProvider = new GoogleAuthProvider();
+
